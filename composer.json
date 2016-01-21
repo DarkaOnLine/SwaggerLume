@@ -1,0 +1,22 @@
+{
+  "name": "darkaonline/swagger-lume",
+  "description": "Swagger integration to Lumen 5",
+  "keywords": ["lumen", "laravel", "swagger"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Darius Matulionis",
+      "email": "darius@matulionis.lt"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "zircote/swagger-php": "~2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "SwaggerLume\\": "src"
+    }
+  },
+  "minimum-stability": "dev"
+}
