@@ -7,7 +7,6 @@ use Illuminate\Console\Command;
 
 class PublishViewsCommand extends Command
 {
-
     /**
      * The console command name.
      *
@@ -20,7 +19,7 @@ class PublishViewsCommand extends Command
      *
      * @var string
      */
-    protected $description = "Publish views";
+    protected $description = 'Publish views';
 
     /**
      * Execute the console command.
@@ -29,7 +28,7 @@ class PublishViewsCommand extends Command
      */
     public function fire()
     {
-        $this->info("Publishing view files");
+        $this->info('Publishing view files');
 
         (new Publisher($this))->publishFile(
             realpath(__DIR__.'/../../resources/views/').'/index.blade.php',
@@ -37,5 +36,4 @@ class PublishViewsCommand extends Command
             'index.blade.php'
         );
     }
-
 }

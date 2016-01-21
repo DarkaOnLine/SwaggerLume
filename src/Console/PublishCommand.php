@@ -1,11 +1,11 @@
-<?php namespace SwaggerLume\Console;
+<?php
+
+namespace SwaggerLume\Console;
 
 use Illuminate\Console\Command;
 
-
 class PublishCommand extends Command
 {
-
     /**
      * The console command name.
      *
@@ -18,7 +18,7 @@ class PublishCommand extends Command
      *
      * @var string
      */
-    protected $description = "Publish config, views, assets";
+    protected $description = 'Publish config, views, assets';
 
     /**
      * Execute the console command.
@@ -27,10 +27,9 @@ class PublishCommand extends Command
      */
     public function fire()
     {
-        $this->info("Publishing all files");
+        $this->info('Publishing all files');
         $this->call('swagger-lume:publish-config');
         $this->call('swagger-lume:publish-views');
         $this->call('swagger-lume:publish-assets');
     }
-
 }

@@ -11,14 +11,12 @@ use SwaggerLume\Console\PublishConfigCommand;
 
 class ServiceProvider extends BaseProvider
 {
-
     /**
      * Indicates if loading of the provider is deferred.
      *
      * @var bool
      */
     protected $defer = true;
-
 
     /**
      * Bootstrap the application events.
@@ -41,7 +39,7 @@ class ServiceProvider extends BaseProvider
      */
     public function register()
     {
-        $configPath = __DIR__ . '/../config/swagger-lume.php';
+        $configPath = __DIR__.'/../config/swagger-lume.php';
         $this->mergeConfigFrom($configPath, 'swagger-lume');
 
         $this->app['command.swagger-lume.publish'] = $this->app->share(
@@ -95,8 +93,7 @@ class ServiceProvider extends BaseProvider
             'command.swagger-lume.publish-config',
             'command.swagger-lume.publish-views',
             'command.swagger-lume.publish-assets',
-            'command.swagger-lume.generate'
+            'command.swagger-lume.generate',
         ];
     }
-
 }
