@@ -7,7 +7,6 @@ use Illuminate\Console\Command;
 
 class PublishConfigCommand extends Command
 {
-
     /**
      * The console command name.
      *
@@ -20,7 +19,7 @@ class PublishConfigCommand extends Command
      *
      * @var string
      */
-    protected $description = "Publish config";
+    protected $description = 'Publish config';
 
     /**
      * Execute the console command.
@@ -29,7 +28,7 @@ class PublishConfigCommand extends Command
      */
     public function fire()
     {
-        $this->info("Publish config files");
+        $this->info('Publish config files');
 
         (new Publisher($this))->publishFile(
             realpath(__DIR__.'/../../config/').'/swagger-lume.php',
@@ -37,5 +36,4 @@ class PublishConfigCommand extends Command
             'swagger-lume.php'
         );
     }
-
 }

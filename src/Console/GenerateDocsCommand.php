@@ -1,12 +1,12 @@
-<?php namespace SwaggerLume\Console;
+<?php
+
+namespace SwaggerLume\Console;
 
 use SwaggerLume\Generator;
 use Illuminate\Console\Command;
 
-
 class GenerateDocsCommand extends Command
 {
-
     /**
      * The console command name.
      *
@@ -19,7 +19,7 @@ class GenerateDocsCommand extends Command
      *
      * @var string
      */
-    protected $description = "Regenerate docs";
+    protected $description = 'Regenerate docs';
 
     /**
      * Execute the console command.
@@ -28,8 +28,7 @@ class GenerateDocsCommand extends Command
      */
     public function fire()
     {
-        $this->info("Regenerating docs");
+        $this->info('Regenerating docs');
         Generator::generateDocs();
     }
-
 }

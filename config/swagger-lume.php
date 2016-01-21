@@ -2,44 +2,42 @@
 
 return [
 
-    "api" => [
+    'api' => [
         /*
           |--------------------------------------------------------------------------
           | Edit to set the api's title
           |--------------------------------------------------------------------------
           */
-        "title" => "Swagger IU",
+        'title' => 'Swagger IU',
         /*
        |--------------------------------------------------------------------------
        | Edit to set the api's Auth token
        |--------------------------------------------------------------------------
        */
-        "auth_token" => env('API_AUTH_TOKEN', false),
+        'auth_token' => env('API_AUTH_TOKEN', false),
 
         /*
         |--------------------------------------------------------------------------
         | Edit to set the api key variable in interface
         |--------------------------------------------------------------------------
         */
-        "key_var" => env('API_KEY_VAR', 'api_key'),
+        'key_var' => env('API_KEY_VAR', 'api_key'),
 
         /*
         |--------------------------------------------------------------------------
         | Edit to set where to inject api key (header, query)
         |--------------------------------------------------------------------------
         */
-        "key_inject" => env('API_KEY_INJECT', 'query'),
+        'key_inject' => env('API_KEY_INJECT', 'query'),
         /*
         |--------------------------------------------------------------------------
         | Edit to set the api's version number
         |--------------------------------------------------------------------------
         */
-        "version" => env('DEFAULT_API_VERSION', '1'),
+        'version' => env('DEFAULT_API_VERSION', '1'),
     ],
 
-
-
-    "routes" => [
+    'routes' => [
         /*
         |--------------------------------------------------------------------------
         | Route for accessing api documentation interface
@@ -54,49 +52,48 @@ return [
         'docs' => 'docs',
     ],
 
-
-    "paths" => [
+    'paths' => [
         /*
         |--------------------------------------------------------------------------
         | Absolute path to location where parsed swagger annotations will be stored
         |--------------------------------------------------------------------------
         */
-        'docs' => storage_path("api-docs"),
+        'docs' => storage_path('api-docs'),
 
         /*
         |--------------------------------------------------------------------------
         | Absolute path to directory containing the swagger annotations are stored.
         |--------------------------------------------------------------------------
         */
-        "annotations" => base_path("app"),
+        'annotations' => base_path('app'),
 
         /*
         |--------------------------------------------------------------------------
         | Absolute path to directory where to export assets
         |--------------------------------------------------------------------------
         */
-        "assets" => base_path("public/vendor/swagger-lume"),
+        'assets' => base_path('public/vendor/swagger-lume'),
 
         /*
         |--------------------------------------------------------------------------
         | Path to assets public directory
         |--------------------------------------------------------------------------
         */
-        "assets_public" => "/vendor/swagger-lume",
+        'assets_public' => '/vendor/swagger-lume',
 
         /*
         |--------------------------------------------------------------------------
         | Absolute path to directory where to export views
         |--------------------------------------------------------------------------
         */
-        "views" => base_path("resources/views/vendor/swagger-lume"),
+        'views' => base_path('resources/views/vendor/swagger-lume'),
 
         /*
         |--------------------------------------------------------------------------
         | Absolute path to directories that you would like to exclude from swagger generation
         |--------------------------------------------------------------------------
         */
-        "excludes" => [],
+        'excludes' => [],
     ],
 
     /*
@@ -104,23 +101,23 @@ return [
     | Turn this off to remove swagger generation on production
     |--------------------------------------------------------------------------
     */
-    "generate_always" => env('SWAGGER_GENERATE_ALWAYS', false),
+    'generate_always' => env('SWAGGER_GENERATE_ALWAYS', false),
 
     /*
     |--------------------------------------------------------------------------
     | Edit to set the swagger version number
     |--------------------------------------------------------------------------
     */
-    "swagger_version" => env('SWAGGER_VERSION', '2.0'),
+    'swagger_version' => env('SWAGGER_VERSION', '2.0'),
 
     /*
     |--------------------------------------------------------------------------
     | Edit to trust the proxy's ip address - needed for AWS Load Balancer
     |--------------------------------------------------------------------------
     */
-    "proxy" => false,
+    'proxy' => false,
 
-    "headers" => [
+    'headers' => [
         /*
         |--------------------------------------------------------------------------
         | Uncomment to add response headers when swagger is generated
@@ -137,6 +134,6 @@ return [
         /*"request" => [
             'TestMe' => 'testValue'
         ],*/
-    ]
+    ],
 
 ];
