@@ -9,8 +9,9 @@
       "email": "darius@matulionis.lt"
     }
   ],
-  "require": {
-    "php": ">=5.4.0",
+  "require": {    
+    "php": ">=5.5.9",
+    "laravel/lumen-framework": "~5.0",
     "zircote/swagger-php": "~2.0"
   },
   "autoload": {
@@ -18,5 +19,6 @@
       "SwaggerLume\\": "src"
     }
   },
-  "minimum-stability": "dev"
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
