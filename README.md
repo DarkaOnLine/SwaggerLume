@@ -1,4 +1,4 @@
-[![Total Downloads](https://poser.pugx.org/DarkaOnLine/SwaggerLume/downloads.svg)](https://packagist.org/packages/DarkaOnLine/SwaggerLume)
+[![Total Downloads](https://poser.pugx.org/DarkaOnLine/swagger-lume/downloads.svg)](https://packagist.org/packages/DarkaOnLine/swagger-lume)
 
 SwaggerLume
 ==========
