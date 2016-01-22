@@ -1,4 +1,5 @@
 [![Total Downloads](https://poser.pugx.org/DarkaOnLine/swagger-lume/downloads.svg)](https://packagist.org/packages/DarkaOnLine/swagger-lume)
+[![StyleCI](https://styleci.io/repos/50113229/shield)](https://styleci.io/repos/50113229)
 
 SwaggerLume
 ==========
