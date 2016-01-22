@@ -14,10 +14,21 @@
     "laravel/lumen-framework": "~5.0",
     "zircote/swagger-php": "~2.0"
   },
+  "require-dev": {
+    "vlucas/phpdotenv": "^2.2"
+  },
   "autoload": {
     "psr-4": {
       "SwaggerLume\\": "src"
     }
+  },
+  "autoload-dev": {
+    "classmap": [
+      "tests/LumenTestCase.php"
+    ],
+    "files": [
+      "tests/ConsoleKernel.php"
+    ]
   },
   "minimum-stability": "dev",
   "prefer-stable": true

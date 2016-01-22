@@ -2,12 +2,12 @@
 
 namespace SwaggerLume;
 
-use Illuminate\Support\ServiceProvider as BaseProvider;
 use SwaggerLume\Console\PublishCommand;
 use SwaggerLume\Console\GenerateDocsCommand;
 use SwaggerLume\Console\PublishViewsCommand;
 use SwaggerLume\Console\PublishAssetsCommand;
 use SwaggerLume\Console\PublishConfigCommand;
+use Illuminate\Support\ServiceProvider as BaseProvider;
 
 class ServiceProvider extends BaseProvider
 {
@@ -28,8 +28,9 @@ class ServiceProvider extends BaseProvider
         $viewPath = __DIR__.'/../resources/views';
         $this->loadViewsFrom($viewPath, 'swagger-lume');
 
-        //Include routes
-        include __DIR__.'/routes.php';
+        $this->app->group(['namespace' => 'SwaggerLume'], function ($app) {
+            require __DIR__.'/routes.php';
+        });
     }
 
     /**
@@ -79,21 +80,5 @@ class ServiceProvider extends BaseProvider
             'command.swagger-lume.publish-assets',
             'command.swagger-lume.generate'
         );
-    }
-
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides()
-    {
-        return [
-            'command.swagger-lume.publish',
-            'command.swagger-lume.publish-config',
-            'command.swagger-lume.publish-views',
-            'command.swagger-lume.publish-assets',
-            'command.swagger-lume.generate',
-        ];
     }
 }
