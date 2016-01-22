@@ -3,8 +3,8 @@
 class RoutesTest extends LumenTestCase
 {
     /** @test */
-    public function cant_access_json_file(){
-
+    public function cant_access_json_file()
+    {
         $jsonUrl = config('swagger-lume.routes.docs');
 
         $this->get($jsonUrl);
@@ -13,7 +13,8 @@ class RoutesTest extends LumenTestCase
     }
 
     /** @test */
-    public function can_access_json_file(){
+    public function can_access_json_file()
+    {
         $jsonUrl = config('swagger-lume.routes.docs');
 
         $this->setPaths()->crateJsonDocumentationFile();

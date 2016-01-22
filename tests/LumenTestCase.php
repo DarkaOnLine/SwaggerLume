@@ -4,7 +4,7 @@ class LumenTestCase extends Laravel\Lumen\Testing\TestCase
 {
     public function tearDown()
     {
-        if(file_exists($this->jsonDocsFile())) {
+        if (file_exists($this->jsonDocsFile())) {
             unlink($this->jsonDocsFile());
         }
         parent::tearDown();
@@ -17,26 +17,26 @@ class LumenTestCase extends Laravel\Lumen\Testing\TestCase
      */
     public function createApplication()
     {
-		$app = new Laravel\Lumen\Application(
-		    realpath(__DIR__)
-		);
+        $app = new Laravel\Lumen\Application(
+            realpath(__DIR__)
+        );
 
         $app->withFacades();
 
         $app->configure('swagger-lume');
-
 
         $app->singleton(
             Illuminate\Contracts\Console\Kernel::class,
             ConsoleKernel::class
         );
 
-		$app->register(\SwaggerLume\ServiceProvider::class);
+        $app->register(\SwaggerLume\ServiceProvider::class);
 
-		$app->group(['namespace' => 'SwaggerLume'], function ($app) {
-		    require __DIR__.'/../src/routes.php';
-		});
-		return $app;
+        $app->group(['namespace' => 'SwaggerLume'], function ($app) {
+            require __DIR__.'/../src/routes.php';
+        });
+
+        return $app;
     }
 
     protected function setPaths()
@@ -49,7 +49,7 @@ class LumenTestCase extends Laravel\Lumen\Testing\TestCase
         $cfg = config('view');
         $cfg['view'] = [
             'paths' => __DIR__.'/../resources/views',
-            'compiled' => __DIR__.'/storage/logs'
+            'compiled' => __DIR__.'/storage/logs',
         ];
         config($cfg);
 
@@ -60,7 +60,6 @@ class LumenTestCase extends Laravel\Lumen\Testing\TestCase
     {
         file_put_contents($this->jsonDocsFile(), '');
     }
-
 
     protected function jsonDocsFile()
     {
