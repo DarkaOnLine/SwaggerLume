@@ -1,4 +1,6 @@
 .idea
+/tests/storage/api-docs/*
+/tests/storage/logs/*
 /vendor
 /logs
 /composer.lock
