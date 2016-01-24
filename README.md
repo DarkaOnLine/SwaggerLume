@@ -13,7 +13,7 @@ Installation
 ============
 
 ```php
-    composer require "darkaonline/swagger-lume ~1.0"
+    composer require "darkaonline/swagger-lume 1.*"
 ```
 
 
