@@ -34,6 +34,15 @@ $app->get(config('swagger-lume.routes.api'), function () {
         (new Request)->setTrustedProxies([$proxy]);
     }
 
+    $extras = [];
+    $conf = config('swagger-lume');
+    if (array_key_exists('validatorUrl', $conf)) {
+        // This allows for a null value, since this has potentially
+        // desirable side effects for swagger.  See the view for more
+        // details.
+        $extras['validatorUrl'] = $conf['validatorUrl'];
+    }
+
     //need the / at the end to avoid CORS errors on Homestead systems.
     $response = new Response(
         view('swagger-lume::index', [
@@ -43,7 +52,7 @@ $app->get(config('swagger-lume.routes.api'), function () {
             'secure' => (new Request)->secure(),
             'urlToDocs' => url(config('swagger-lume.routes.docs')),
             'requestHeaders' => config('swagger-lume.headers.request'),
-        ]),
+        ], $extras),
         200
     );
 

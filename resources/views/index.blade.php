@@ -45,6 +45,10 @@
     window.swaggerUi = new SwaggerUi({
         url: url,
         dom_id: "swagger-ui-container",
+        @if(array_key_exists('validatorUrl', get_defined_vars()))
+        // This differentiates between a null value and an undefined variable
+        validatorUrl: {!! isset($validatorUrl) ? '"' . $validatorUrl . '"' : 'null' !!},
+        @endif
         supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
         onComplete: function(swaggerApi, swaggerUi){
             @if(isset($requestHeaders))
