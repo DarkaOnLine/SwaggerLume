@@ -52,7 +52,7 @@ $app->get(config('swagger-lume.routes.api'), function () {
             'secure' => (new Request)->secure(),
             'urlToDocs' => url(config('swagger-lume.routes.docs')),
             'requestHeaders' => config('swagger-lume.headers.request'),
-        ],$extras),
+        ], $extras),
         200
     );
 
