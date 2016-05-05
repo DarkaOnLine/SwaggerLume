@@ -86,6 +86,8 @@
         defaultModelRendering: 'schema',
         showRequestHeaders: false
       });
+	  
+	  window.swaggerUi.load();
 
       function addApiKeyAuthorization(){
         var key = encodeURIComponent($('#input_apiKey')[0].value);
@@ -104,9 +106,7 @@
       @if($apiKey)
       $('#input_apiKey').val("{{$apiKey}}");
       addApiKeyAuthorization();
-      @endif
-
-      window.swaggerUi.load();
+      @endif     
     });
 </script>
 </head>
