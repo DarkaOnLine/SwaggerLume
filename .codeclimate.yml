@@ -9,7 +9,7 @@ ratings:
   paths:
     - src/**
 exclude_paths:
-  - test/**/*
+  - tests/**/*
   - vendor/**/*
   - resoufces/**/*
   - config/**/*
