@@ -2,6 +2,14 @@
 
 class LumenTestCase extends Laravel\Lumen\Testing\TestCase
 {
+    public $auth_token_prefix = 'TEST_PREFIX_';
+
+    public $auth_token = 'N3W_T0K3N';
+
+    public $key_var = 'TEST_KEY';
+
+    public $validator_url = 'http://validate.dev';
+
     public function tearDown()
     {
         if (file_exists($this->jsonDocsFile())) {
@@ -43,6 +51,10 @@ class LumenTestCase extends Laravel\Lumen\Testing\TestCase
     {
         $cfg = config('swagger-lume');
         $cfg['paths']['annotations'] = storage_path('annotations');
+        $cfg['api']['auth_token_prefix'] = $this->auth_token_prefix;
+        $cfg['api']['auth_token'] = $this->auth_token;
+        $cfg['api']['key_var'] = $this->key_var;
+        $cfg['validatorUrl'] = $this->validator_url;
         $cfg['generate_always'] = true;
         config(['swagger-lume' => $cfg]);
 

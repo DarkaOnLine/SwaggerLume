@@ -65,7 +65,10 @@
                 onComplete: function (swaggerApi, swaggerUi) {
                     @if(isset($requestHeaders))
                     @foreach($requestHeaders as $requestKey => $requestValue)
-                    window.swaggerUi.api.clientAuthorizations.add("{{$requestKey}}", new SwaggerClient.ApiKeyAuthorization("{{$requestKey}}", "{{$requestValue}}", "header"));
+                    window.swaggerUi.api.clientAuthorizations.add(
+                        "{{$requestKey}}",
+                        new SwaggerClient.ApiKeyAuthorization("{{$requestKey}}", "{{$requestValue}}", "header")
+                    );
                     @endforeach
                             @endif
 
@@ -106,7 +109,7 @@
                 if (key && key.trim() != "") {
                     var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization(
                         "{{$apiKeyVar}}",
-                        key,
+                        "{{$apiKeyPrefix}}" + key,
                         "{{$apiKeyInject}}"
                     );
                     window.swaggerUi.api.clientAuthorizations.add("{{$apiKeyVar}}", apiKeyAuth);

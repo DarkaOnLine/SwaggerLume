@@ -46,6 +46,7 @@ $app->get(config('swagger-lume.routes.api'), function () {
     //need the / at the end to avoid CORS errors on Homestead systems.
     $response = new Response(
         view('swagger-lume::index', [
+            'apiKeyPrefix' => config('swagger-lume.api.auth_token_prefix'),
             'apiKey' => config('swagger-lume.api.auth_token'),
             'apiKeyVar' => config('swagger-lume.api.key_var'),
             'apiKeyInject' => config('swagger-lume.api.key_inject'),
