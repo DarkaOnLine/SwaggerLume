@@ -28,7 +28,7 @@ class RoutesTest extends LumenTestCase
     public function can_access_documentation_interface()
     {
         $this->setPaths();
-        
+
         $this->app->prepareForConsoleCommand();
 
         $response = $this->get(config('swagger-lume.routes.api'));
@@ -40,7 +40,7 @@ class RoutesTest extends LumenTestCase
         $this->assertContains($this->auth_token, $response->response->getContent());
 
         $this->assertContains($this->key_var, $response->response->getContent());
-        
+
         $this->assertContains($this->validator_url, $response->response->getContent());
     }
 }
