@@ -73,7 +73,7 @@ return [
         | Absolute path to directory containing the swagger annotations are stored.
         |--------------------------------------------------------------------------
          */
-        'annotations' => base_path('../modules'),
+        'annotations' => base_path(env('SWAGGER_ANNOTATION_CHECK_FOLDER',"vendor/waveRFID")),
 
         /*
         |--------------------------------------------------------------------------
