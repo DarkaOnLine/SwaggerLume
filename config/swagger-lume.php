@@ -8,7 +8,7 @@ return [
         | Edit to set the api's title
         |--------------------------------------------------------------------------
          */
-        'title' => 'Swagger UI',
+        'title' => 'WaveRFID API',
 
         /*
         |--------------------------------------------------------------------------
@@ -73,7 +73,7 @@ return [
         | Absolute path to directory containing the swagger annotations are stored.
         |--------------------------------------------------------------------------
          */
-        'annotations' => base_path('app'),
+        'annotations' => base_path('../modules'),
 
         /*
         |--------------------------------------------------------------------------
@@ -101,7 +101,7 @@ return [
         | Absolute path to directories that you would like to exclude from swagger generation
         |--------------------------------------------------------------------------
          */
-        'excludes' => [],
+        'excludes' => ['SwaggerLume'],
     ],
 
     /*
@@ -109,7 +109,7 @@ return [
     | Turn this off to remove swagger generation on production
     |--------------------------------------------------------------------------
      */
-    'generate_always' => env('SWAGGER_GENERATE_ALWAYS', false),
+    'generate_always' => env('SWAGGER_GENERATE_ALWAYS', true),
 
     /*
     |--------------------------------------------------------------------------
