@@ -2,6 +2,7 @@
   "name": "waveRFID/swagger-lume",
   "description": "Swagger integration to Lumen 5",
   "keywords": ["lumen", "laravel", "swagger"],
+  "version":"dev-development",
   "license": "MIT",
   "authors": [
     {
