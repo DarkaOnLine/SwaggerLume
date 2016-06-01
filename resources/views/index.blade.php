@@ -104,28 +104,22 @@
 
             window.swaggerUi.load();
 
-            function addApiKeyAuthorization() {
-                var key = encodeURIComponent($('#input_apiKey')[0].value);
-                if (key && key.trim() != "") {
-                    var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization(
-                        "{{$apiKeyVar}}",
-                        "{{$apiKeyPrefix}}" + key,
-                        "{{$apiKeyInject}}"
+            $('#input_AppUrl').change(function(){
+                var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization(
+                        "AppUrl",
+                        $(this).val(),
+                        "header"
                     );
-                    window.swaggerUi.api.clientAuthorizations.add("{{$apiKeyVar}}", apiKeyAuth);
-                }
-            }
-
-            $('#input_apiKey').change(function () {
-                addApiKeyAuthorization();
+                window.swaggerUi.api.clientAuthorizations.add("AppUrl", apiKeyAuth);
             });
-
-            // if you have an apiKey you would like to pre-populate on the page for demonstration purposes
-            // just put it in the .env file, API_AUTH_TOKEN variable
-            @if($apiKey)
-            $('#input_apiKey').val("{{$apiKey}}");
-            addApiKeyAuthorization();
-            @endif
+            $('#input_JwtToken').change(function(){
+                 var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization(
+                        "WJWT-Authorization",
+                        $(this).val(),
+                        "header"
+                    );
+                window.swaggerUi.api.clientAuthorizations.add("WJWT-Authorization", apiKeyAuth);
+            });
 
         });
     </script>
@@ -138,13 +132,16 @@
         <form id='api_selector'>
             <div class='input'><input placeholder="http://example.com/api" id="input_baseUrl" name="baseUrl"
                                       type="text"/></div>
-            <div class='input'><input placeholder="api_key" id="input_apiKey" name="apiKey" type="text"/></div>
             <div class='input'><a id="explore" href="#" data-sw-translate>Explore</a></div>
-        </form>
-    </div>
+        </form>    </div>
+
 </div>
 
 <div id="message-bar" class="swagger-ui-wrap" data-sw-translate>&nbsp;</div>
+<div class="swagger-ui-wrap">
+            <div class='input'><input placeholder="AppUrl" id="input_AppUrl" name="AppUrl" type="text"/></div>
+            <div class='input'><input placeholder="JwtToken" id="input_JwtToken" name="JwtToken" type="text"/></div>
+</div>
 <div id="swagger-ui-container" class="swagger-ui-wrap"></div>
 </body>
 </html>

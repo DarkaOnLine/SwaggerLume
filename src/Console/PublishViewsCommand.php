@@ -31,7 +31,7 @@ class PublishViewsCommand extends Command
         $this->info('Publishing view files');
 
         (new Publisher($this))->publishFile(
-            realpath(__DIR__.'/../../resources/views/').'/index.blade.php',
+            __DIR__.'/../../resources/views/'.'index.blade.php',
             config('swagger-lume.paths.views'),
             'index.blade.php'
         );
