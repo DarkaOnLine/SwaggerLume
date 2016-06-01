@@ -101,7 +101,7 @@ return [
         | Absolute path to directories that you would like to exclude from swagger generation
         |--------------------------------------------------------------------------
          */
-        'excludes' => ['SwaggerLume'],
+        'excludes' => ['swagger-lume'],
     ],
 
     /*
