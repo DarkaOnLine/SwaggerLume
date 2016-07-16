@@ -139,7 +139,14 @@
 
 <div id="message-bar" class="swagger-ui-wrap" data-sw-translate>&nbsp;</div>
 <div class="swagger-ui-wrap">
-            <div class='input'><input placeholder="AppUrl" id="input_AppUrl" name="AppUrl" type="text"/></div>
+            <div class='input'>
+                <select placeholder="AppUrl" id="input_AppUrl" name="AppUrl" type="text">
+                <option value="http://www.waverfid.dev">http://www.waverfid.dev</option>
+                @foreach ($clients as $client)
+                    <option value="{{'http://'.$client->domain}}">{{ $client->domain }}</option>
+                @endforeach
+                </select>
+            </div>
             <div class='input'><input placeholder="JwtToken" id="input_JwtToken" name="JwtToken" type="text"/></div>
 </div>
 <div id="swagger-ui-container" class="swagger-ui-wrap"></div>
