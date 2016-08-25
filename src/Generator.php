@@ -29,7 +29,7 @@ class Generator
 
     protected static function defineConstants(array $constants)
     {
-        if (!empty($constants)) {
+        if (! empty($constants)) {
             foreach ($constants as $key => $value) {
                 defined($key) || define($key, $value);
             }
