@@ -154,4 +154,13 @@ return [
     ],*/
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Uncomment to add constants which can be used in anotations
+    |--------------------------------------------------------------------------
+     */
+    'constants' => [
+        //'SWAGGER_LUME_CONST_HOST' => env('SWAGGER_LUME_CONST_HOST', 'http://my-default-host.com'),
+    ]
+
 ];

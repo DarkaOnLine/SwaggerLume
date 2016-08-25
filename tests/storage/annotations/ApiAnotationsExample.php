@@ -4,6 +4,7 @@
  * @SWG\Swagger(
  *     basePath="/api/v1",
  *     schemes={"http"},
+ *     host=SWAGGER_LUME_CONST_HOST,
  *     @SWG\Info(
  *         version="1.0.0",
  *         title="Swagger Lume API",
