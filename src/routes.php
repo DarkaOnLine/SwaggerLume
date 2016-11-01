@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\App;
-use Swagger\Swagger;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\File;
+use Swagger\Swagger;
 
 $app->get(config('swagger-lume.routes.docs'), function ($page = 'api-docs.json') {
     $filePath = config('swagger-lume.paths.docs')."/{$page}";
@@ -13,7 +13,7 @@ $app->get(config('swagger-lume.routes.docs'), function ($page = 'api-docs.json')
         $filePath .= '.json';
     }
 
-    if (! File::exists($filePath)) {
+    if (!File::exists($filePath)) {
         App::abort(404, "Cannot find {$filePath}");
     }
 
@@ -30,8 +30,8 @@ $app->get(config('swagger-lume.routes.api'), function () {
     }
 
     if (config('swagger-lume.proxy')) {
-        $proxy = (new Request)->server('REMOTE_ADDR');
-        (new Request)->setTrustedProxies([$proxy]);
+        $proxy = (new Request())->server('REMOTE_ADDR');
+        (new Request())->setTrustedProxies([$proxy]);
     }
 
     $extras = [];
@@ -46,18 +46,18 @@ $app->get(config('swagger-lume.routes.api'), function () {
     //need the / at the end to avoid CORS errors on Homestead systems.
     $response = new Response(
         view('swagger-lume::index', [
-            'apiKeyPrefix' => config('swagger-lume.api.auth_token_prefix'),
-            'apiKey' => config('swagger-lume.api.auth_token'),
-            'apiKeyVar' => config('swagger-lume.api.key_var'),
-            'apiKeyInject' => config('swagger-lume.api.key_inject'),
-            'secure' => (new Request)->secure(),
-            'urlToDocs' => url(config('swagger-lume.routes.docs')),
+            'apiKeyPrefix'   => config('swagger-lume.api.auth_token_prefix'),
+            'apiKey'         => config('swagger-lume.api.auth_token'),
+            'apiKeyVar'      => config('swagger-lume.api.key_var'),
+            'apiKeyInject'   => config('swagger-lume.api.key_inject'),
+            'secure'         => (new Request())->secure(),
+            'urlToDocs'      => url(config('swagger-lume.routes.docs')),
             'requestHeaders' => config('swagger-lume.headers.request'),
         ], $extras),
         200
     );
 
-    if (is_array(config('swagger-lume.headers.view')) && ! empty(config('swagger-lume.headers.view'))) {
+    if (is_array(config('swagger-lume.headers.view')) && !empty(config('swagger-lume.headers.view'))) {
         foreach (config('swagger-lume.headers.view') as $key => $value) {
             $response->header($key, $value);
         }

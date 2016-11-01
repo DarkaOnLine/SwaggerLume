@@ -2,8 +2,8 @@
 
 namespace SwaggerLume\Console;
 
-use SwaggerLume\Generator;
 use Illuminate\Console\Command;
+use SwaggerLume\Generator;
 
 class GenerateDocsCommand extends Command
 {

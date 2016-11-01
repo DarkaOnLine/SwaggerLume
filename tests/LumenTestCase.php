@@ -72,7 +72,7 @@ class LumenTestCase extends Laravel\Lumen\Testing\TestCase
 
         $cfg = config('view');
         $cfg['view'] = [
-            'paths' => __DIR__.'/../resources/views',
+            'paths'    => __DIR__.'/../resources/views',
             'compiled' => __DIR__.'/storage/logs',
         ];
         config($cfg);

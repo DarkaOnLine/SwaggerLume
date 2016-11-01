@@ -10,7 +10,7 @@ class Generator
     {
         $appDir = config('swagger-lume.paths.annotations');
         $docDir = config('swagger-lume.paths.docs');
-        if (! File::exists($docDir) || is_writable($docDir)) {
+        if (!File::exists($docDir) || is_writable($docDir)) {
             // delete all existing documentation
             if (File::exists($docDir)) {
                 File::deleteDirectory($docDir);
@@ -29,7 +29,7 @@ class Generator
 
     protected static function defineConstants(array $constants)
     {
-        if (! empty($constants)) {
+        if (!empty($constants)) {
             foreach ($constants as $key => $value) {
                 defined($key) || define($key, $value);
             }
