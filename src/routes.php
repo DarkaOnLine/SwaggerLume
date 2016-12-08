@@ -53,7 +53,7 @@ $app->get(config('swagger-lume.routes.api'), function () {
             'secure' => (new Request)->secure(),
             'urlToDocs' => url(config('swagger-lume.routes.docs')),
             'requestHeaders' => config('swagger-lume.headers.request'),
-            'clients' => Waverfid\Client\Model\Client::all()
+            'clients' => Waverfid\Client\Models\Client::all()
         ], $extras),
         200
     );
