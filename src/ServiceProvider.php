@@ -2,12 +2,12 @@
 
 namespace SwaggerLume;
 
-use Illuminate\Support\ServiceProvider as BaseProvider;
-use SwaggerLume\Console\GenerateDocsCommand;
-use SwaggerLume\Console\PublishAssetsCommand;
 use SwaggerLume\Console\PublishCommand;
-use SwaggerLume\Console\PublishConfigCommand;
+use SwaggerLume\Console\GenerateDocsCommand;
 use SwaggerLume\Console\PublishViewsCommand;
+use SwaggerLume\Console\PublishAssetsCommand;
+use SwaggerLume\Console\PublishConfigCommand;
+use Illuminate\Support\ServiceProvider as BaseProvider;
 
 class ServiceProvider extends BaseProvider
 {

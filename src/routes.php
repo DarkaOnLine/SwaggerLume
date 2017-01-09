@@ -1,10 +1,10 @@
 <?php
 
+use Swagger\Swagger;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\File;
-use Swagger\Swagger;
 
 $app->get(config('swagger-lume.routes.docs'), function ($page = 'api-docs.json') {
     $filePath = config('swagger-lume.paths.docs')."/{$page}";
@@ -13,7 +13,7 @@ $app->get(config('swagger-lume.routes.docs'), function ($page = 'api-docs.json')
         $filePath .= '.json';
     }
 
-    if (!File::exists($filePath)) {
+    if (! File::exists($filePath)) {
         App::abort(404, "Cannot find {$filePath}");
     }
 
@@ -57,7 +57,7 @@ $app->get(config('swagger-lume.routes.api'), function () {
         200
     );
 
-    if (is_array(config('swagger-lume.headers.view')) && !empty(config('swagger-lume.headers.view'))) {
+    if (is_array(config('swagger-lume.headers.view')) && ! empty(config('swagger-lume.headers.view'))) {
         foreach (config('swagger-lume.headers.view') as $key => $value) {
             $response->header($key, $value);
         }

@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Console\Scheduling\Schedule;
 use Laravel\Lumen\Console\Kernel;
+use Illuminate\Console\Scheduling\Schedule;
 
 class ConsoleKernel extends Kernel
 {

@@ -15,20 +15,20 @@ class Publisher
 
     public function publishFile($source, $destinationPath, $fileName)
     {
-        if (!is_dir($destinationPath)) {
-            if (!mkdir($destinationPath, 0755, true)) {
+        if (! is_dir($destinationPath)) {
+            if (! mkdir($destinationPath, 0755, true)) {
                 $this->command->error('Cant crate directory: '.$destinationPath);
             }
         }
 
-        if (!is_writable($destinationPath)) {
-            if (!chmod($destinationPath, 0755)) {
+        if (! is_writable($destinationPath)) {
+            if (! chmod($destinationPath, 0755)) {
                 $this->command->error('Destination path is not writable');
             }
         }
 
         if (file_exists($source)) {
-            if (!copy($source, $destinationPath.'/'.$fileName)) {
+            if (! copy($source, $destinationPath.'/'.$fileName)) {
                 $this->command->error('File was not copied');
             }
         } else {
@@ -38,13 +38,13 @@ class Publisher
 
     public function publishDirectory($source, $destination)
     {
-        if (!is_dir($source)) {
+        if (! is_dir($source)) {
             $this->command->error('Bad source path');
         } else {
             $dir = opendir($source);
 
-            if (!is_dir($destination)) {
-                if (!mkdir($destination, 0755, true)) {
+            if (! is_dir($destination)) {
+                if (! mkdir($destination, 0755, true)) {
                     $this->command->error('Cant crate directory: '.$destination);
                 }
             }
