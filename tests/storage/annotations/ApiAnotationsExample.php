@@ -16,6 +16,19 @@
 
 /**
  * @SWG\SecurityScheme(
+ *   securityDefinition="api_auth",
+ *   type="oauth2",
+ *   authorizationUrl="/api/oauth",
+ *   flow="implicit",
+ *   scopes={
+ *     "read:projects": "read your projects",
+ *     "write:projects": "modify projects"
+ *   }
+ * )
+ */
+
+/**
+ * @SWG\SecurityScheme(
  *   securityDefinition="api_key",
  *   type="apiKey",
  *   in="query",

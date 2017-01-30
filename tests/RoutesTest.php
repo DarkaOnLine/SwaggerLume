@@ -35,12 +35,6 @@ class RoutesTest extends LumenTestCase
 
         $this->assertResponseOk();
 
-        $this->assertContains($this->auth_token_prefix, $response->response->getContent());
-
-        $this->assertContains($this->auth_token, $response->response->getContent());
-
-        $this->assertContains($this->key_var, $response->response->getContent());
-
         $this->assertContains($this->validator_url, $response->response->getContent());
     }
 }
