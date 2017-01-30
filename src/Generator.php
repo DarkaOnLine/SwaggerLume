@@ -15,12 +15,24 @@ class Generator
             if (File::exists($docDir)) {
                 File::deleteDirectory($docDir);
             }
+
+            self::defineConstants(config('swagger-lume.constants') ?: []);
+
             File::makeDirectory($docDir);
             $excludeDirs = config('swagger-lume.paths.excludes');
             $swagger = \Swagger\scan($appDir, $excludeDirs);
 
             $filename = $docDir.'/api-docs.json';
             $swagger->saveAs($filename);
+        }
+    }
+
+    protected static function defineConstants(array $constants)
+    {
+        if (! empty($constants)) {
+            foreach ($constants as $key => $value) {
+                defined($key) || define($key, $value);
+            }
         }
     }
 }

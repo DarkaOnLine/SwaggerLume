@@ -55,17 +55,29 @@ class LumenTestCase extends Laravel\Lumen\Testing\TestCase
     protected function setPaths()
     {
         $cfg = config('swagger-lume');
+        //Changing path
         $cfg['paths']['annotations'] = storage_path('annotations');
+
+        //Changing api auth params
         $cfg['api']['auth_token_prefix'] = $this->auth_token_prefix;
         $cfg['api']['auth_token'] = $this->auth_token;
         $cfg['api']['key_var'] = $this->key_var;
+
+        //Changing validation url
         $cfg['validatorUrl'] = $this->validator_url;
+
+        //For test we want to regenerate always
         $cfg['generate_always'] = true;
+
+        //Adding constants which will be replaced in generated json file
+        $cfg['constants']['SWAGGER_LUME_CONST_HOST'] = 'http://my-default-host.com';
+
+        //Save the config
         config(['swagger-lume' => $cfg]);
 
         $cfg = config('view');
         $cfg['view'] = [
-            'paths' => __DIR__.'/../resources/views',
+            'paths'    => __DIR__.'/../resources/views',
             'compiled' => __DIR__.'/storage/logs',
         ];
         config($cfg);

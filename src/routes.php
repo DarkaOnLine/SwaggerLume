@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\App;
 use Swagger\Swagger;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\File;
 
 $app->get(config('swagger-lume.routes.docs'), function ($page = 'api-docs.json') {
@@ -30,8 +30,8 @@ $app->get(config('swagger-lume.routes.api'), function () {
     }
 
     if (config('swagger-lume.proxy')) {
-        $proxy = (new Request)->server('REMOTE_ADDR');
-        (new Request)->setTrustedProxies([$proxy]);
+        $proxy = (new Request())->server('REMOTE_ADDR');
+        (new Request())->setTrustedProxies([$proxy]);
     }
 
     $extras = [];
@@ -46,13 +46,9 @@ $app->get(config('swagger-lume.routes.api'), function () {
     //need the / at the end to avoid CORS errors on Homestead systems.
     $response = new Response(
         view('swagger-lume::index', [
-            'apiTitle' => config('swagger-lume.api.title'),
-            'apiKeyPrefix' => config('swagger-lume.api.auth_token_prefix'),
-            'apiKey' => config('swagger-lume.api.auth_token'),
-            'apiKeyVar' => config('swagger-lume.api.key_var'),
-            'apiKeyInject' => config('swagger-lume.api.key_inject'),
-            'secure' => (new Request)->secure(),
-            'urlToDocs' => url(config('swagger-lume.routes.docs')),
+            'apiTitle'       => config('swagger-lume.api.title'),
+            'secure'         => (new Request())->secure(),
+            'urlToDocs'      => url(config('swagger-lume.routes.docs')),
             'requestHeaders' => config('swagger-lume.headers.request'),
             'docExpansion'       => config('swagger-lume.docExpansion'),
             'highlightThreshold' => config('swagger-lume.highlightThreshold'),
