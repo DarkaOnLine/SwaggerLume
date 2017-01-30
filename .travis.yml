@@ -25,7 +25,7 @@ before_install:
 
 install:
   - travis_retry composer update $DEFAULT_COMPOSER_FLAGS
-  - composer info -D | sor
+  - composer info -D | sort
 
 script:
   - vendor/bin/phpunit
