@@ -51,7 +51,7 @@ Configuration
 
 Changes in 2.0
 ============
-- Laravel 5.4 support
+- Lumen 5.4 support
 - Swagger UI 2.2.8
 
 
