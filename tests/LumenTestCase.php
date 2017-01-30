@@ -34,6 +34,11 @@ class LumenTestCase extends Laravel\Lumen\Testing\TestCase
         $app->configure('swagger-lume');
 
         $app->singleton(
+            Illuminate\Contracts\Debug\ExceptionHandler::class,
+            ExceptionsHandler::class
+        );
+
+        $app->singleton(
             Illuminate\Contracts\Console\Kernel::class,
             ConsoleKernel::class
         );
