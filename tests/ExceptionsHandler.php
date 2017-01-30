@@ -1,9 +1,9 @@
 <?php
 
+use Laravel\Lumen\Exceptions\Handler;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Laravel\Lumen\Exceptions\Handler;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class ExceptionsHandler extends Handler
@@ -19,6 +19,7 @@ class ExceptionsHandler extends Handler
         ModelNotFoundException::class,
         ValidationException::class,
     ];
+
     /**
      * Report or log an exception.
      *
@@ -31,6 +32,7 @@ class ExceptionsHandler extends Handler
     {
         parent::report($e);
     }
+
     /**
      * Render an exception into an HTTP response.
      *
