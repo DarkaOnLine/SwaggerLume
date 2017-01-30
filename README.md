@@ -14,10 +14,10 @@ This package is a wrapper of [Swagger-php](https://github.com/zircote/swagger-ph
 Installation
 ============
 
-```php
-    composer require "darkaonline/swagger-lume 1.*"
-```
-
+Lumen           | SwaggerLume
+:---------------|:----------
+ 5.0 - 5.3      | ``` composer require "darkaonline/swagger-lume:~1.0" ```
+ 5.4.x          | ``` composer require "darkaonline/swagger-lume:~2.0" ```
 
 - Open your `bootstrap/app.php` file and: 
 
@@ -48,6 +48,11 @@ Configuration
 - Run `swagger-lume:publish-views` to publish views (`resources/views/vendor/swagger-lume`)
 - Run `swagger-lume:publish` to publish everything
 - Run `swagger-lume:generate` to generate docs
+
+Changes in 2.0
+============
+- Laravel 5.4 support
+- Swagger UI 2.2.8
 
 
 Swagger-php
