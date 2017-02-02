@@ -1,9 +1,11 @@
 <?php
 
+namespace Tests;
+
 class RoutesTest extends LumenTestCase
 {
     /** @test */
-    public function cant_access_json_file()
+    public function cantAccessJsonFile()
     {
         $jsonUrl = config('swagger-lume.routes.docs');
 
@@ -13,7 +15,7 @@ class RoutesTest extends LumenTestCase
     }
 
     /** @test */
-    public function can_access_json_file()
+    public function canAccessJsonFile()
     {
         $jsonUrl = config('swagger-lume.routes.docs');
 
@@ -25,7 +27,7 @@ class RoutesTest extends LumenTestCase
     }
 
     /** @test */
-    public function can_access_documentation_interface()
+    public function canAccessDocumentationInterface()
     {
         $this->setPaths();
 

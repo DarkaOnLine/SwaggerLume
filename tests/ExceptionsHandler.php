@@ -1,5 +1,7 @@
 <?php
+namespace Tests;
 
+use Exception;
 use Laravel\Lumen\Exceptions\Handler;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;

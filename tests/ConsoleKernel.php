@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests;
+
 use Laravel\Lumen\Console\Kernel;
 use Illuminate\Console\Scheduling\Schedule;
 
