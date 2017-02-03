@@ -22,6 +22,7 @@
              yui="true" highlight="true"
              lowUpperBound="50" highLowerBound="80" />
         <log type="coverage-clover" target="./tests/storage/logs/test-reports/clover.xml"/>
+        <log type="coverage-php" target="./tests/storage/logs/test-reports/coverage.cov"/>
         <log type="junit" target="./tests/storage/logs/test-reports/junit.xml" logIncompleteSkipped="false"/>
     </logging>
     <php>
