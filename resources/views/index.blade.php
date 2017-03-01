@@ -106,19 +106,26 @@
                 defaultModelRendering: 'schema',
                 showRequestHeaders: false
             });
-
+            $('#input_AppUrl').change(function(){
+                var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization(
+                  "AppUrl",
+                  $(this).val(),
+                  "header"
+                );
+                window.swaggerUi.api.clientAuthorizations.add("AppUrl", apiKeyAuth);
+            });
+            $('#input_JwtToken').change(function(){
+                var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization(
+                  "WJWT-Authorization",
+                  $(this).val(),
+                  "header"
+                );
+                window.swaggerUi.api.clientAuthorizations.add("WJWT-Authorization", apiKeyAuth);
+            });
             window.swaggerUi.load();
-        });
-        $('#input_JwtToken').change(function(){
-          var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization(
-            "WJWT-Authorization",
-            $(this).val(),
-            "header"
-          );
-          window.swaggerUi.api.clientAuthorizations.add("WJWT-Authorization", apiKeyAuth);
+
         });
 
-      });
     </script>
 </head>
 

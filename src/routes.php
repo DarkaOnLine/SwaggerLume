@@ -50,10 +50,10 @@ $app->get(config('swagger-lume.routes.api'), function () {
             'secure'         => (new Request())->secure(),
             'urlToDocs'      => url(config('swagger-lume.routes.docs')),
             'requestHeaders' => config('swagger-lume.headers.request'),
-            'clients' => Waverfid\Client\Models\Client::all()
+            'clients' => Waverfid\Client\Models\Client::all(),
             'docExpansion'       => config('swagger-lume.docExpansion'),
             'highlightThreshold' => config('swagger-lume.highlightThreshold'),
-            'apisSorter' => config('swagger-lume.apisSorter'),
+            'apisSorter' => config('swagger-lume.apisSorter')
         ], $extras),
         200
     );
