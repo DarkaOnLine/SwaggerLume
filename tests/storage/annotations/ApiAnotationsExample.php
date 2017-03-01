@@ -4,6 +4,7 @@
  * @SWG\Swagger(
  *     basePath="/api/v1",
  *     schemes={"http"},
+ *     host=SWAGGER_LUME_CONST_HOST,
  *     @SWG\Info(
  *         version="1.0.0",
  *         title="Swagger Lume API",
@@ -11,6 +12,19 @@
  *             email="darius@matulionis.lt"
  *         ),
  *     )
+ * )
+ */
+
+/**
+ * @SWG\SecurityScheme(
+ *   securityDefinition="api_auth",
+ *   type="oauth2",
+ *   authorizationUrl="/api/oauth",
+ *   flow="implicit",
+ *   scopes={
+ *     "read:projects": "read your projects",
+ *     "write:projects": "modify projects"
+ *   }
  * )
  */
 

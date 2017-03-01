@@ -1,22 +1,35 @@
 language: php
-
-php:
-  - 5.5.9
-  - 5.5
-  - 5.6
-  - 7.0
-
 sudo: false
-
-before_script:
-  - composer self-update
-  - composer install --prefer-source --no-interaction
-
-script: phpunit
-
-after_script:
-  - vendor/bin/test-reporter --coverage-report=./tests/storage/logs/test-reports/clover.xml
-
-addons:
-  code_climate:
-    repo_token: CODECLIMATE_REPO_TOKEN
+git:
+  depth: 1
+env:
+  global:
+  - DEFAULT_COMPOSER_FLAGS="--no-interaction --no-progress --optimize-autoloader"
+  - REPORT_TESTS_COVERAGE=0
+matrix:
+  fast_finish: true
+  include:
+  - php: 5.6
+  - php: 7.0
+  - php: 7.1
+    env: REPORT_TESTS_COVERAGE=1
+cache:
+  directories:
+  - "$HOME/.composer/cache"
+before_install:
+  - travis_retry composer global require $DEFAULT_COMPOSER_FLAGS hirak/prestissimo
+install:
+  - travis_retry composer update $DEFAULT_COMPOSER_FLAGS
+  - composer info -D | sort
+script:
+  - vendor/bin/phpunit
+after_success:
+  #- if [ $REPORT_TESTS_COVERAGE == 1 ]; then php vendor/bin/test-reporter --coverage-report=./tests/storage/logs/test-reports/clover.xml; fi
+  - if [ $REPORT_TESTS_COVERAGE == 1 ]; then php vendor/bin/coveralls -v; fi
+#addons:
+#  code_climate:
+#    repo_token: CODECLIMATE_REPO_TOKEN
+notifications:
+  email: false
+  slack:
+    secure: LcBRB+/pmXrUpsjv618NfIFJlbOQkQZclcavvAJgACGTxAy1p19+WLddtWivPVPpm1txexyiZu6QEGR9bhVGpmhBFnpPeFkCmkhm7KNbSbwmJvUMU0Vul2Tg+j5xgWAbHSnAInUqBsL1pwG6PoIeeN3IVy6XqeWjN5n86ImFYKFvgdUwZ4O141NWqBKNqmMjV0NXH9DuEW6MHZYOTmVEIxvIOXcohNhruGMXPJJSlRBWXX8fQUsa6iOWVp+9nLuddU4mauImFlx6A7ISCAI74WDFGqMKvYJC3ySGJYscpcAmPEUgZ3fIiq2az31i7+VHPv6PzUwL4B6YOZfJbncSRqpqBmuurjXv5yM1dvZI6prb046MCJEAsZwa12RVHfe7Q76Jp5ZLFyVqvftSM7KEgXM/32xKnRoUUbuSv04hrzEDa16xHlSVvF0s2qIKd5BHoF4RyQlfZuRJ2Rt43Px8zE+UOj86rqlCGXuhBUDfo+Y3ne/PLghAEt0Mdz2GfVtaAOyBVg76R+gk7fir7lj/eBOQQwjYjaeUBtbf4+H2UkoqLhKA7JCgtrWCh98XwkLeVhaufxMrjdTkwqsDXp+eUVV/CDPLqWvILq4Ih5YZXQAfzn9mY7k1Ese2UdPcVxhfKGodZodgsY1tJ6CO5ibL3FPkZbCQviFot1gEa2RSfLo=
