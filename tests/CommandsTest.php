@@ -1,10 +1,10 @@
 <?php
 
-namespace SwaggerLume\Console\Helpers;
+namespace Tests;
 
 use Illuminate\Support\Facades\Artisan;
 
-class CommandsTest extends \LumenTestCase
+class CommandsTest extends LumenTestCase
 {
     public function setUp()
     {
@@ -15,7 +15,7 @@ class CommandsTest extends \LumenTestCase
     }
 
     /** @test */
-    public function can_generate_json_documentation()
+    public function canGenerateJsonDocumentation()
     {
         Artisan::call('swagger-lume:generate');
 
@@ -25,10 +25,14 @@ class CommandsTest extends \LumenTestCase
 
         $this->assertJson($fileContent);
         $this->assertContains('Swagger Lume API', $fileContent);
+
+        //Check if constants are replaced
+        $this->assertContains('http://my-default-host.com', $fileContent);
+        $this->assertNotContains('SWAGGER_LUME_CONST_HOST', $fileContent);
     }
 
     /** @test */
-    public function can_publish_assets()
+    public function canPublishAssets()
     {
         $this->setPaths();
         Artisan::call('swagger-lume:publish');

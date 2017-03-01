@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/DarkaOnLine/SwaggerLume.svg?branch=master)](https://travis-ci.org/DarkaOnLine/SwaggerLume)
-[![Test Coverage](https://codeclimate.com/repos/56a70d5ba9ee680070010a05/badges/40dbc66effc417734313/coverage.svg)](https://codeclimate.com/repos/56a70d5ba9ee680070010a05/coverage)
+[![Coverage Status](https://coveralls.io/repos/github/DarkaOnLine/SwaggerLume/badge.svg?branch=master)](https://coveralls.io/github/DarkaOnLine/SwaggerLume?branch=master)
 [![Code Climate](https://codeclimate.com/repos/56a70d5ba9ee680070010a05/badges/40dbc66effc417734313/gpa.svg)](https://codeclimate.com/repos/56a70d5ba9ee680070010a05/feed)
 [![StyleCI](https://styleci.io/repos/50113229/shield)](https://styleci.io/repos/50113229)
 [![Total Downloads](https://poser.pugx.org/DarkaOnLine/swagger-lume/downloads.svg)](https://packagist.org/packages/DarkaOnLine/swagger-lume)
@@ -14,10 +14,10 @@ This package is a wrapper of [Swagger-php](https://github.com/zircote/swagger-ph
 Installation
 ============
 
-```php
-    composer require "darkaonline/swagger-lume 1.*"
-```
-
+Lumen           | SwaggerLume
+:---------------|:----------
+ 5.0 - 5.3      | ``` composer require "darkaonline/swagger-lume:~1.0" ```
+ 5.4.x          | ``` composer require "darkaonline/swagger-lume:~2.0" ```
 
 - Open your `bootstrap/app.php` file and: 
 
@@ -39,15 +39,20 @@ add this line in `Register Service Providers` section:
 
 - Run `php artisan swagger-lume:publish-config` to publish configs (`config/swagger-lume.php`)
 - Make configuration changes if needed 
-- Run `swagger-lume:publish` to publish everything
+- Run `php artisan swagger-lume:publish` to publish everything
 
 Configuration
 ============
-- Run `swagger-lume:publish-config` to publish configs (`config/swagger-lume.php`)
-- Run `swagger-lume:publish-assets` to publish swagger-ui to your public folder (`public/vendor/swagger-lume`)
-- Run `swagger-lume:publish-views` to publish views (`resources/views/vendor/swagger-lume`)
-- Run `swagger-lume:publish` to publish everything
-- Run `swagger-lume:generate` to generate docs
+- Run `php artisan swagger-lume:publish-config` to publish configs (`config/swagger-lume.php`)
+- Run `php artisan swagger-lume:publish-assets` to publish swagger-ui to your public folder (`public/vendor/swagger-lume`)
+- Run `php artisan swagger-lume:publish-views` to publish views (`resources/views/vendor/swagger-lume`)
+- Run `php artisan swagger-lume:publish` to publish everything
+- Run `php artisan swagger-lume:generate` to generate docs
+
+Changes in 2.0
+============
+- Lumen 5.4 support
+- Swagger UI 2.2.8
 
 
 Swagger-php

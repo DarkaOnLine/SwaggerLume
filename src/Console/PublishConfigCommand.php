@@ -2,8 +2,8 @@
 
 namespace SwaggerLume\Console;
 
-use SwaggerLume\Console\Helpers\Publisher;
 use Illuminate\Console\Command;
+use SwaggerLume\Console\Helpers\Publisher;
 
 class PublishConfigCommand extends Command
 {

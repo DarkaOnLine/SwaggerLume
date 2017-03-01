@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="vendor/autoload.php"
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="vendor/autoload.php"
          colors="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
+         processIsolation="false"
          stopOnFailure="false"
-         syntaxCheck="true">
+         syntaxCheck="false">
     <testsuite name="SwaggerLume TestSuite">
         <directory>tests/</directory>
     </testsuite>
@@ -19,6 +22,12 @@
              yui="true" highlight="true"
              lowUpperBound="50" highLowerBound="80" />
         <log type="coverage-clover" target="./tests/storage/logs/test-reports/clover.xml"/>
+        <log type="coverage-php" target="./tests/storage/logs/test-reports/coverage.cov"/>
         <log type="junit" target="./tests/storage/logs/test-reports/junit.xml" logIncompleteSkipped="false"/>
     </logging>
+    <php>
+        <env name="APP_ENV" value="testing"/>
+        <env name="CACHE_DRIVER" value="array"/>
+        <env name="QUEUE_DRIVER" value="sync"/>
+    </php>
 </phpunit>

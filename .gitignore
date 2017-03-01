@@ -1,4 +1,7 @@
 .idea
+/tests/config
+/tests/public
+/tests/resources
 /tests/storage/api-docs/*
 /tests/storage/logs/*
 /vendor
