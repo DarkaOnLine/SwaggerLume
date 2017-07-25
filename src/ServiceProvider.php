@@ -9,7 +9,7 @@ use SwaggerLume\Console\PublishAssetsCommand;
 use SwaggerLume\Console\PublishConfigCommand;
 use \Waverfid\Common\CommonServiceProvider ;
 
-class ServiceProvider extends CommonServiceProvider
+class ServiceProvider extends \Waverfid\Core\BaseServiceProvider
 {
     /**
      * Indicates if loading of the provider is deferred.
