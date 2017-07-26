@@ -48,7 +48,7 @@ $app->get(config('swagger-lume.routes.api'), function () {
         view('swagger-lume::index', [
             'apiTitle'       => config('swagger-lume.api.title'),
             'secure'         => (new Request())->secure(),
-            'urlToDocs'      => url(config('swagger-lume.routes.docs')),
+            'urlToDocs'      => url(config('swagger-lume.routes.docs'), [], (new Request())->secure()),
             'requestHeaders' => config('swagger-lume.headers.request'),
             'docExpansion'       => config('swagger-lume.docExpansion'),
             'highlightThreshold' => config('swagger-lume.highlightThreshold'),
