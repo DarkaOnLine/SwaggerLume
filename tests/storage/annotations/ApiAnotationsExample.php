@@ -3,49 +3,18 @@
 /**
  * @SWG\Swagger(
  *     basePath="/api/v1",
- *     schemes={"http"},
+ *     schemes={"http", "https"},
  *     host=SWAGGER_LUME_CONST_HOST,
  *     @SWG\Info(
  *         version="1.0.0",
  *         title="Swagger Lume API",
+ *         description="Swagger Lume API description",
  *         @SWG\Contact(
  *             email="darius@matulionis.lt"
  *         ),
  *     )
  * )
  */
-
-/**
- * @SWG\SecurityScheme(
- *   securityDefinition="api_auth",
- *   type="oauth2",
- *   authorizationUrl="/api/oauth",
- *   flow="implicit",
- *   scopes={
- *     "read:projects": "read your projects",
- *     "write:projects": "modify projects"
- *   }
- * )
- */
-
-/**
- * @SWG\SecurityScheme(
- *   securityDefinition="api_key",
- *   type="apiKey",
- *   in="query",
- *   name="api_key"
- * )
- */
-
-/**
- * @SWG\SecurityScheme(
- *   securityDefinition="X-Api-Token",
- *   type="apiKey",
- *   in="header",
- *   name="X-Api-Token"
- * )
- */
-
 
 
 /**
@@ -60,9 +29,12 @@
  *          description="successful operation"
  *       ),
  *       @SWG\Response(response=400, description="Bad request"),
+ *       security={
+ *           {"api_key_security_example": {}}
+ *       }
  *     )
  *
- * Returns lis of projects
+ * Returns list of projects
  */
 
 
@@ -86,6 +58,11 @@
  *       ),
  *      @SWG\Response(response=400, description="Bad request"),
  *      @SWG\Response(response=404, description="Resource Not Found"),
+ *      security={
+ *         {
+ *             "oauth2_security_example": {"write:projects", "read:projects"}
+ *         }
+ *     },
  * )
  *
  */

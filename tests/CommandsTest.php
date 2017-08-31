@@ -38,18 +38,3 @@ class CommandsTest extends LumenTestCase
         Artisan::call('swagger-lume:publish');
     }
 }
-
-function copy()
-{
-    return true;
-}
-
-function chmod()
-{
-    return true;
-}
-
-function mkdir()
-{
-    return true;
-}
