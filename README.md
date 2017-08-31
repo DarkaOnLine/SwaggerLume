@@ -62,7 +62,7 @@ Changes in 2.0
 - Lumen 5.4 support
 - Swagger UI 2.2.8
 
-Migrate from 2.0 to 5.0
+Migrate from 2.0 to 3.0
 ============
 - Remove `config/swagger-lume.php` file (make a copy if needed)
 - Remove `public/vendor/swagger-lume` directory
