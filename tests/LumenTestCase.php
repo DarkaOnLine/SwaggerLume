@@ -2,10 +2,10 @@
 
 namespace Tests;
 
-use Illuminate\Contracts\Console\Kernel;
-use Illuminate\Contracts\Debug\ExceptionHandler;
 use Laravel\Lumen\Application;
 use Laravel\Lumen\Testing\TestCase;
+use Illuminate\Contracts\Console\Kernel;
+use Illuminate\Contracts\Debug\ExceptionHandler;
 use SwaggerLume\ServiceProvider as SwaggerLumeServiceProvider;
 
 class LumenTestCase extends TestCase
@@ -105,7 +105,6 @@ class LumenTestCase extends TestCase
             $base = realpath(
                 __DIR__.'/vendor'
             );
-
 
             mkdir($base = $base.'/swagger-api');
             mkdir($base = $base.'/swagger-ui');

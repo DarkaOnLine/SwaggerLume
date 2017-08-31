@@ -18,7 +18,6 @@ $route->get(config('swagger-lume.routes.assets').'/{asset}', [
     'uses' => 'Http\Controllers\SwaggerLumeAssetController@index',
 ]);
 
-
 $route->get(config('swagger-lume.routes.oauth2_callback'), [
     'as' => 'swagger-lume.oauth2_callback',
     'middleware' => config('swagger-lume.routes.middleware.oauth2_callback', []),
