@@ -13,7 +13,7 @@ class SwaggerLumeAssetController extends BaseController
 
         return (new Response(
             file_get_contents($path), 200, [
-                'Content-Type' => (pathinfo($asset))['extension'] == 'css' ?
+                'Content-Type' => pathinfo($asset)['extension'] == 'css' ?
                     'text/css' : 'application/javascript',
             ]
         ))->setSharedMaxAge(31536000)
