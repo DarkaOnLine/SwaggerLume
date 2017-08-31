@@ -12,14 +12,17 @@
   "require": {    
     "php": ">=5.6.4",
     "laravel/lumen-framework": "~5.4",
-    "zircote/swagger-php": "~2.0"
+    "zircote/swagger-php": "~2.0",
+    "swagger-api/swagger-ui": "^3.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "~5.0",
-    "vlucas/phpdotenv": "^2.2",
+    "phpunit/phpunit": "~5.7",
     "satooshi/php-coveralls": "^1.0"
   },
   "autoload": {
+    "files": [
+      "src/helpers.php"
+    ],
     "psr-4": {
       "SwaggerLume\\": "src"
     }

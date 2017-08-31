@@ -14,10 +14,12 @@ This package is a wrapper of [Swagger-php](https://github.com/zircote/swagger-ph
 Installation
 ============
 
-Lumen           | SwaggerLume
-:---------------|:----------
- 5.0 - 5.3      | ``` composer require "darkaonline/swagger-lume:~1.0" ```
- 5.4.x          | ``` composer require "darkaonline/swagger-lume:~2.0" ```
+ Lumen      | Swagger UI| OpenAPI Spec compatibility | L5-Swagger
+:-----------|:----------|:---------------------------|:----------
+ 5.0 - 5.3  | 2.2       | 1.1, 1.2, 2.0              | ``` composer require "darkaonline/swagger-lume:~1.0" ```
+ 5.4.x      | 2.2       | 1.1, 1.2, 2.0              | ``` composer require "darkaonline/swagger-lume:~2.0" ```
+ 5.4.x      | 3         | 2.0                        | ``` composer require "darkaonline/swagger-lume:~3.0" ```
+
 
 - Open your `bootstrap/app.php` file and: 
 
@@ -44,15 +46,29 @@ add this line in `Register Service Providers` section:
 Configuration
 ============
 - Run `php artisan swagger-lume:publish-config` to publish configs (`config/swagger-lume.php`)
-- Run `php artisan swagger-lume:publish-assets` to publish swagger-ui to your public folder (`public/vendor/swagger-lume`)
 - Run `php artisan swagger-lume:publish-views` to publish views (`resources/views/vendor/swagger-lume`)
 - Run `php artisan swagger-lume:publish` to publish everything
 - Run `php artisan swagger-lume:generate` to generate docs
+
+Changes in 3.0
+============
+- Swagger UI 3.
+- Configuration changes.
+- Assets dependency dropped. Now includes from composer package.
+- [See migration from 2.0 to 3.0](#migrate-from-20-to-30)
 
 Changes in 2.0
 ============
 - Lumen 5.4 support
 - Swagger UI 2.2.8
+
+Migrate from 2.0 to 3.0
+============
+- Remove `config/swagger-lume.php` file (make a copy if needed)
+- Remove `public/vendor/swagger-lume` directory
+- Remove `resources/views/vendor/swagger-lume` directory
+- Run `swagger-lume:publish` to publish new swagger-ui view and configuration
+- Edit your `config/swagger-lume.php` file
 
 
 Swagger-php

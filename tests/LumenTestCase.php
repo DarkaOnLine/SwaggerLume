@@ -4,6 +4,8 @@ namespace Tests;
 
 use Laravel\Lumen\Application;
 use Laravel\Lumen\Testing\TestCase;
+use Illuminate\Contracts\Console\Kernel;
+use Illuminate\Contracts\Debug\ExceptionHandler;
 use SwaggerLume\ServiceProvider as SwaggerLumeServiceProvider;
 
 class LumenTestCase extends TestCase
@@ -14,7 +16,7 @@ class LumenTestCase extends TestCase
 
     public $key_var = 'TEST_KEY';
 
-    public $validator_url = 'http://validate.dev';
+    public $docs_url = 'http://localhost/docs';
 
     public function tearDown()
     {
@@ -40,20 +42,22 @@ class LumenTestCase extends TestCase
         $app->configure('swagger-lume');
 
         $app->singleton(
-            \Illuminate\Contracts\Debug\ExceptionHandler::class,
+            ExceptionHandler::class,
             ExceptionsHandler::class
         );
 
         $app->singleton(
-            \Illuminate\Contracts\Console\Kernel::class,
+            Kernel::class,
             ConsoleKernel::class
         );
 
         $app->register(SwaggerLumeServiceProvider::class);
 
-        $app->group(['namespace' => 'SwaggerLume'], function ($app) {
+        $app->group(['namespace' => 'SwaggerLume'], function ($route) {
             require __DIR__.'/../src/routes.php';
         });
+
+        $this->copyAssets();
 
         return $app;
     }
@@ -63,14 +67,6 @@ class LumenTestCase extends TestCase
         $cfg = config('swagger-lume');
         //Changing path
         $cfg['paths']['annotations'] = storage_path('annotations');
-
-        //Changing api auth params
-        $cfg['api']['auth_token_prefix'] = $this->auth_token_prefix;
-        $cfg['api']['auth_token'] = $this->auth_token;
-        $cfg['api']['key_var'] = $this->key_var;
-
-        //Changing validation url
-        $cfg['validatorUrl'] = $this->validator_url;
 
         //For test we want to regenerate always
         $cfg['generate_always'] = true;
@@ -99,5 +95,33 @@ class LumenTestCase extends TestCase
     protected function jsonDocsFile()
     {
         return config('swagger-lume.paths.docs').'/api-docs.json';
+    }
+
+    protected function copyAssets()
+    {
+        $src = __DIR__.'/../vendor/swagger-api/swagger-ui/dist/';
+        $destination = __DIR__.'/vendor/swagger-api/swagger-ui/dist/';
+        if (! is_dir($destination)) {
+            $base = realpath(
+                __DIR__.'/vendor'
+            );
+
+            mkdir($base = $base.'/swagger-api');
+            mkdir($base = $base.'/swagger-ui');
+            mkdir($base = $base.'/dist');
+        }
+
+        foreach (scandir($src) as $file) {
+            $filePath = $src.$file;
+
+            if (! is_readable($filePath) || is_dir($filePath)) {
+                continue;
+            }
+
+            copy(
+                $filePath,
+                $destination.$file
+            );
+        }
     }
 }
