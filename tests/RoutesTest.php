@@ -40,7 +40,6 @@ class RoutesTest extends LumenTestCase
         $this->assertContains($this->docs_url, $response->response->getContent());
     }
 
-
     /** @test */
     public function itCanServeAssets()
     {
