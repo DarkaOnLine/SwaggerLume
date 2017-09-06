@@ -26,7 +26,7 @@ class PublishConfigCommand extends Command
      *
      * @return void
      */
-    public function fire()
+    public function handle()
     {
         $this->info('Publish config files');
 
