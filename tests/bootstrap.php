@@ -11,6 +11,7 @@
 |
 */
 require __DIR__.'/../vendor/autoload.php';
+
 /*
 |--------------------------------------------------------------------------
 | Set The Default Timezone

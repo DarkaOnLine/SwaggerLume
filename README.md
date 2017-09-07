@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/jellevl/SwaggerLume.svg?branch=master)](https://travis-ci.org/jellevl/SwaggerLume)
+[![Build Status](https://travis-ci.org/DarkaOnLine/SwaggerLume.svg?branch=master)](https://travis-ci.org/DarkaOnLine/SwaggerLume)
 [![Coverage Status](https://coveralls.io/repos/github/DarkaOnLine/SwaggerLume/badge.svg?branch=master)](https://coveralls.io/github/DarkaOnLine/SwaggerLume?branch=master)
 [![Code Climate](https://codeclimate.com/repos/56a70d5ba9ee680070010a05/badges/40dbc66effc417734313/gpa.svg)](https://codeclimate.com/repos/56a70d5ba9ee680070010a05/feed)
 [![StyleCI](https://styleci.io/repos/50113229/shield)](https://styleci.io/repos/50113229)
@@ -19,6 +19,7 @@ Installation
  5.0 - 5.3  | 2.2       | 1.1, 1.2, 2.0              | ``` composer require "darkaonline/swagger-lume:~1.0" ```
  5.4.x      | 2.2       | 1.1, 1.2, 2.0              | ``` composer require "darkaonline/swagger-lume:~2.0" ```
  5.4.x      | 3         | 2.0                        | ``` composer require "darkaonline/swagger-lume:~3.0" ```
+ 5.5.x      | 3         | 2.0                        | ``` composer require "darkaonline/swagger-lume:5.5.*" ```
 
 
 - Open your `bootstrap/app.php` file and: 
@@ -55,14 +56,14 @@ Changes in 3.0
 - Swagger UI 3.
 - Configuration changes.
 - Assets dependency dropped. Now includes from composer package.
-- [See migration from 2.0 to 3.0](#migrate-from-20-to-30)
+- [See migration from 2.0 to 3.0](#migrate-from-20-to-30-or-55)
 
 Changes in 2.0
 ============
 - Lumen 5.4 support
 - Swagger UI 2.2.8
 
-Migrate from 2.0 to 3.0
+Migrate from 2.0 to 3.0 or 5.5
 ============
 - Remove `config/swagger-lume.php` file (make a copy if needed)
 - Remove `public/vendor/swagger-lume` directory

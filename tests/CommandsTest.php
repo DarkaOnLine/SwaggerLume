@@ -36,6 +36,24 @@ class CommandsTest extends LumenTestCase
     {
         $this->setPaths();
         Artisan::call('swagger-lume:publish');
-        $this->assertTrue(true);
+
+        $config_src = __DIR__ . '/../config/swagger-lume.php';;
+        $config_published = __DIR__ . '/config/swagger-lume.php';
+
+        $view_src = __DIR__ . '/../resources/views/index.blade.php';
+        $view_published = __DIR__ . '/resources/views/vendor/swagger-lume/index.blade.php';
+
+        $this->assertTrue(file_exists($config_published));
+        $this->assertTrue(file_exists($view_published));
+
+        $this->assertEquals(
+            file_get_contents($config_src),
+            file_get_contents($config_published)
+        );
+
+        $this->assertEquals(
+            file_get_contents($view_src),
+            file_get_contents($view_published)
+        );
     }
 }
