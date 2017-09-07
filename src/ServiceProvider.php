@@ -27,7 +27,7 @@ class ServiceProvider extends BaseProvider
         $viewPath = __DIR__.'/../resources/views';
         $this->loadViewsFrom($viewPath, 'swagger-lume');
 
-        $this->app->group(['namespace' => 'SwaggerLume'], function ($route) {
+        $this->app->router->group(['namespace' => 'SwaggerLume'], function ($route) {
             require __DIR__.'/routes.php';
         });
     }

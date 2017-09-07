@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/DarkaOnLine/SwaggerLume.svg?branch=master)](https://travis-ci.org/DarkaOnLine/SwaggerLume)
+[![Build Status](https://travis-ci.org/jellevl/SwaggerLume.svg?branch=master)](https://travis-ci.org/jellevl/SwaggerLume)
 [![Coverage Status](https://coveralls.io/repos/github/DarkaOnLine/SwaggerLume/badge.svg?branch=master)](https://coveralls.io/github/DarkaOnLine/SwaggerLume?branch=master)
 [![Code Climate](https://codeclimate.com/repos/56a70d5ba9ee680070010a05/badges/40dbc66effc417734313/gpa.svg)](https://codeclimate.com/repos/56a70d5ba9ee680070010a05/feed)
 [![StyleCI](https://styleci.io/repos/50113229/shield)](https://styleci.io/repos/50113229)

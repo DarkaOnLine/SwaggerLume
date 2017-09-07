@@ -36,5 +36,6 @@ class CommandsTest extends LumenTestCase
     {
         $this->setPaths();
         Artisan::call('swagger-lume:publish');
+        $this->assertTrue(true);
     }
 }
