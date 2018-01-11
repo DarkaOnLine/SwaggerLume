@@ -4,6 +4,7 @@ namespace SwaggerLume\Http\Controllers;
 
 use SwaggerLume\Generator;
 use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Request;
 use Laravel\Lumen\Routing\Controller as BaseController;
@@ -15,7 +16,7 @@ class SwaggerLumeController extends BaseController
      *
      * @param null $jsonFile
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function docs($jsonFile = null)
     {
@@ -28,7 +29,7 @@ class SwaggerLumeController extends BaseController
 
         $content = File::get($filePath);
 
-        return new Response($content, 200, ['Content-Type' => 'application/json']);
+        return new JsonResponse($content);
     }
 
     /**
