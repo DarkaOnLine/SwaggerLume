@@ -56,7 +56,8 @@ class SwaggerLumeController extends BaseController
                 'configUrl'          => config('swagger-lume.additional_config_url'),
                 'validatorUrl'       => config('swagger-lume.validator_url'),
             ]),
-            200
+            200,
+            ['Content-Type' => 'text/html']
         );
 
         return $response;
