@@ -37,7 +37,28 @@ class LumenTestCase extends TestCase
             realpath(__DIR__)
         );
 
-        $app->make('url')->forceRootUrl(env('APP_URL', 'https://localhost'));
+        $generator = $app->make('url');
+
+        if (method_exists($generator, 'forceRootUrl')) {
+            $generator->forceRootUrl(env('APP_URL', 'http://localhost'));
+        } else {
+            $uri = $app->make('config')->get('app.url', 'http://localhost');
+
+            $components = parse_url($uri);
+
+            $server = $_SERVER;
+
+            if (isset($components['path'])) {
+                $server = array_merge($server, [
+                'SCRIPT_FILENAME' => $components['path'],
+                'SCRIPT_NAME' => $components['path'],
+            ]);
+            }
+
+            $app->instance('request', \Illuminate\Http\Request::create(
+                $uri, 'GET', [], [], [], $server
+            ));
+        }
 
         $app->withFacades();
 
