@@ -37,6 +37,8 @@ class LumenTestCase extends TestCase
             realpath(__DIR__)
         );
 
+        $app->make('url')->forceRootUrl(env('APP_URL', 'https://localhost'));
+
         $app->withFacades();
 
         $app->configure('swagger-lume');
@@ -79,7 +81,7 @@ class LumenTestCase extends TestCase
 
         $cfg = config('view');
         $cfg['view'] = [
-            'paths'    => __DIR__.'/../resources/views',
+            'paths' => __DIR__.'/../resources/views',
             'compiled' => __DIR__.'/storage/logs',
         ];
         config($cfg);

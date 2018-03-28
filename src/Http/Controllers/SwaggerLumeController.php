@@ -4,7 +4,6 @@ namespace SwaggerLume\Http\Controllers;
 
 use SwaggerLume\Generator;
 use Illuminate\Http\Response;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Request;
 use Laravel\Lumen\Routing\Controller as BaseController;
@@ -29,7 +28,7 @@ class SwaggerLumeController extends BaseController
 
         $content = File::get($filePath);
 
-        return new JsonResponse($content);
+        return new Response($content, 200, ['Content-Type' => 'application/json']);
     }
 
     /**
@@ -41,11 +40,6 @@ class SwaggerLumeController extends BaseController
     {
         if (config('swagger-lume.generate_always')) {
             Generator::generateDocs();
-        }
-
-        if (config('swagger-lume.proxy')) {
-            $proxy = Request::server('REMOTE_ADDR');
-            Request::setTrustedProxies([$proxy]);
         }
 
         //need the / at the end to avoid CORS errors on Homestead systems.
