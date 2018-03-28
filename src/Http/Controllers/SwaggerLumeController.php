@@ -42,19 +42,14 @@ class SwaggerLumeController extends BaseController
             Generator::generateDocs();
         }
 
-        if (config('swagger-lume.proxy')) {
-            $proxy = Request::server('REMOTE_ADDR');
-            Request::setTrustedProxies([$proxy]);
-        }
-
         //need the / at the end to avoid CORS errors on Homestead systems.
         $response = new Response(
             view('swagger-lume::index', [
-                'secure'         => Request::secure(),
-                'urlToDocs'          => route('swagger-lume.docs'),
-                'operationsSorter'   => config('swagger-lume.operations_sort'),
-                'configUrl'          => config('swagger-lume.additional_config_url'),
-                'validatorUrl'       => config('swagger-lume.validator_url'),
+                'secure' => Request::secure(),
+                'urlToDocs' => route('swagger-lume.docs'),
+                'operationsSorter' => config('swagger-lume.operations_sort'),
+                'configUrl' => config('swagger-lume.additional_config_url'),
+                'validatorUrl' => config('swagger-lume.validator_url'),
             ]),
             200,
             ['Content-Type' => 'text/html']

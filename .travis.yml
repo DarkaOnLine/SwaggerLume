@@ -20,10 +20,15 @@ before_install:
 install:
   - travis_retry composer update $DEFAULT_COMPOSER_FLAGS
   - composer info -D | sort
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 script:
-  - vendor/bin/phpunit
+  - if [ $REPORT_TESTS_COVERAGE != 1 ]; then vendor/bin/phpunit --no-coverage; fi
+  - if [ $REPORT_TESTS_COVERAGE == 1 ]; then vendor/bin/phpunit; cp tests/storage/logs/test-reports/clover.xml clover.xml; fi
 after_success:
-  #- if [ $REPORT_TESTS_COVERAGE == 1 ]; then php vendor/bin/test-reporter --coverage-report=./tests/storage/logs/test-reports/clover.xml; fi
+  - if [ $REPORT_TESTS_COVERAGE == 1 ] && [ $TRAVIS_PULL_REQUEST == "false" ]; then ./cc-test-reporter after-build -t clover --exit-code $TRAVIS_TEST_RESULT; fi
   - if [ $REPORT_TESTS_COVERAGE == 1 ]; then php vendor/bin/coveralls -v; fi
 #addons:
 #  code_climate:
