@@ -10,13 +10,15 @@
     }
   ],
   "require": {
-    "php": ">=5.6.4",
-    "laravel/lumen-framework": "~5.5",
-    "zircote/swagger-php": "~2.0",
+    "php": ">=7.1.3",
+    "laravel/lumen-framework": "~5.6",
+    "zircote/swagger-php": "3.*",
     "swagger-api/swagger-ui": "^3.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "~5.7",
+    "fzaninotto/faker": "~1.4",
+    "phpunit/phpunit": "~7.0",
+    "mockery/mockery": "~1.0",
     "satooshi/php-coveralls": "^2.0"
   },
   "autoload": {

@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'api' => [
         /*
         |--------------------------------------------------------------------------
@@ -126,6 +125,23 @@ return [
                 'write:projects' => 'modify projects in your account',
             ]
         ],*/
+
+        /* Open API 3.0 support
+        'passport' => [ // Unique name of security
+            'type' => 'oauth2', // The type of the security scheme. Valid values are "basic", "apiKey" or "oauth2".
+            'description' => 'Laravel passport oauth2 security.',
+            'in' => 'header',
+            'scheme' => 'https',
+            'flows' => [
+                "password" => [
+                    "authorizationUrl" => config('app.url') . '/oauth/authorize',
+                    "tokenUrl" => config('app.url') . '/oauth/token',
+                    "refreshUrl" => config('app.url') . '/token/refresh',
+                    "scopes" => []
+                ],
+            ],
+        ],
+        */
     ],
 
     /*
@@ -140,7 +156,7 @@ return [
     | Edit to set the swagger version number
     |--------------------------------------------------------------------------
      */
-    'swagger_version' => env('SWAGGER_VERSION', '2.0'),
+    'swagger_version' => env('SWAGGER_VERSION', '3.0'),
 
     /*
     |--------------------------------------------------------------------------
@@ -185,5 +201,4 @@ return [
     'constants' => [
         // 'SWAGGER_LUME_CONST_HOST' => env('SWAGGER_LUME_CONST_HOST', 'http://my-default-host.com'),
     ],
-
 ];

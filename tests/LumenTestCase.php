@@ -85,11 +85,23 @@ class LumenTestCase extends TestCase
         return $app;
     }
 
+    /**
+     * @return bool
+     */
+    protected function isOpenApi()
+    {
+        return version_compare(config('swagger-lume.swagger_version'), '3.0', '>=');
+    }
+
     protected function setPaths()
     {
         $cfg = config('swagger-lume');
         //Changing path
-        $cfg['paths']['annotations'] = storage_path('annotations');
+        $cfg['paths']['annotations'] = storage_path('annotations/Swagger');
+
+        if ($this->isOpenApi()) {
+            $cfg['paths']['annotations'] = storage_path('annotations/OpenApi');
+        }
 
         //For test we want to regenerate always
         $cfg['generate_always'] = true;
