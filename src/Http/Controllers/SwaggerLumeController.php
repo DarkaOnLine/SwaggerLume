@@ -4,6 +4,7 @@ namespace SwaggerLume\Http\Controllers;
 
 use SwaggerLume\Generator;
 use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Request;
 use Laravel\Lumen\Routing\Controller as BaseController;
@@ -28,7 +29,7 @@ class SwaggerLumeController extends BaseController
 
         $content = File::get($filePath);
 
-        return new Response($content, 200, ['Content-Type' => 'application/json']);
+        return new JsonResponse($content);
     }
 
     /**
@@ -50,11 +51,11 @@ class SwaggerLumeController extends BaseController
         //need the / at the end to avoid CORS errors on Homestead systems.
         $response = new Response(
             view('swagger-lume::index', [
-                'secure'         => Request::secure(),
-                'urlToDocs'          => route('swagger-lume.docs'),
-                'operationsSorter'   => config('swagger-lume.operations_sort'),
-                'configUrl'          => config('swagger-lume.additional_config_url'),
-                'validatorUrl'       => config('swagger-lume.validator_url'),
+                'secure' => Request::secure(),
+                'urlToDocs' => route('swagger-lume.docs'),
+                'operationsSorter' => config('swagger-lume.operations_sort'),
+                'configUrl' => config('swagger-lume.additional_config_url'),
+                'validatorUrl' => config('swagger-lume.validator_url'),
             ]),
             200
         );
