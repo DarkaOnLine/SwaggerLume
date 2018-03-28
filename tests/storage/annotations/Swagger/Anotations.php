@@ -7,15 +7,14 @@
  *     host=SWAGGER_LUME_CONST_HOST,
  *     @SWG\Info(
  *         version="1.0.0",
- *         title="Swagger Lume API",
- *         description="Swagger Lume API description",
+ *         title="SwaggerLume API",
+ *         description="SwaggerLume API description",
  *         @SWG\Contact(
  *             email="darius@matulionis.lt"
  *         ),
  *     )
  * )
  */
-
 
 /**
  * @SWG\Get(
@@ -36,7 +35,6 @@
  *
  * Returns list of projects
  */
-
 
 /**
  * @SWG\Get(
@@ -64,5 +62,4 @@
  *         }
  *     },
  * )
- *
  */
