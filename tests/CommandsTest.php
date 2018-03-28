@@ -24,7 +24,7 @@ class CommandsTest extends LumenTestCase
         $fileContent = file_get_contents($this->jsonDocsFile());
 
         $this->assertJson($fileContent);
-        $this->assertContains('Swagger Lume API', $fileContent);
+        $this->assertContains('SwaggerLume', $fileContent);
 
         //Check if constants are replaced
         $this->assertContains('http://my-default-host.com', $fileContent);

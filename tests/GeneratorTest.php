@@ -19,13 +19,17 @@ class GeneratorTest extends LumenTestCase
 
         $this->assertResponseOk();
 
-        $this->assertContains('Swagger Lume API', $response->response->getContent());
+        $this->assertContains('SwaggerLume', $response->response->getContent());
         $this->assertContains('my-default-host.com', $response->response->getContent());
     }
 
     /** @test */
     public function canGenerateApiJsonFileWithChangedBasePath()
     {
+        if ($this->isOpenApi() == true) {
+            $this->markTestSkipped('only for openApi 2.0');
+        }
+
         $this->setPaths();
 
         $cfg = config('swagger-lume');
@@ -40,7 +44,7 @@ class GeneratorTest extends LumenTestCase
 
         $this->assertResponseOk();
 
-        $this->assertContains('Swagger Lume API', $response->response->getContent());
+        $this->assertContains('SwaggerLume', $response->response->getContent());
         $this->assertContains('new_path', $response->response->getContent());
     }
 
@@ -76,33 +80,5 @@ class GeneratorTest extends LumenTestCase
         $this->assertContains('validator-url.dev', $response->response->getContent());
 
         $this->assertTrue(file_exists($this->jsonDocsFile()));
-    }
-
-    /** @test */
-    public function canGenerateApiJsonFileWithSecurityDefinition()
-    {
-        $this->setPaths();
-
-        $cfg = config('swagger-lume');
-        $security = [
-            'new_api_key_securitye' => [
-                'type' => 'apiKey',
-                'name' => 'api_key_name',
-                'in' => 'query',
-            ],
-        ];
-        $cfg['security'] = $security;
-        config(['swagger-lume' => $cfg]);
-
-        Generator::generateDocs();
-
-        $this->assertTrue(file_exists($this->jsonDocsFile()));
-
-        $response = $this->get(config('swagger-lume.routes.docs'));
-
-        $this->assertResponseOk();
-
-        $this->assertContains('new_api_key_securitye', $response->response->getContent());
-        $this->seeJson($security);
     }
 }

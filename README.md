@@ -20,9 +20,10 @@ Installation
  5.4.x      | 2.2       | 1.1, 1.2, 2.0              | ``` composer require "darkaonline/swagger-lume:~2.0" ```
  5.4.x      | 3         | 2.0                        | ``` composer require "darkaonline/swagger-lume:~3.0" ```
  5.5.x      | 3         | 2.0                        | ``` composer require "darkaonline/swagger-lume:5.5.*" ```
+ 5.6.x      | 3         | 2.0, 3.0                   | ``` composer require "darkaonline/swagger-lume:5.6.*" ```
 
 
-- Open your `bootstrap/app.php` file and: 
+- Open your `bootstrap/app.php` file and:
 
 uncomment this line (around line 26) in `Create The Application` section:
 ```php
@@ -41,8 +42,25 @@ add this line in `Register Service Providers` section:
 
 
 - Run `php artisan swagger-lume:publish-config` to publish configs (`config/swagger-lume.php`)
-- Make configuration changes if needed 
+- Make configuration changes if needed
 - Run `php artisan swagger-lume:publish` to publish everything
+
+Using [OpenApi 3.0 Specification](https://github.com/OAI/OpenAPI-Specification)
+============
+If you would like to use lattes OpenApi specifications (originally known as the Swagger Specification) in you project you should:
+- Explicitly require `swagger-php` version 3.* in your projects composer by running:
+```bash
+composer require 'zircote/swagger-php:3.*'
+```
+- Set environment variable `SWAGGER_VERSION` to **3.0** in your `.env` file:
+```
+SWAGGER_VERSION=3.0
+```
+or in your `config/l5-swagger.php`:
+```php
+'swagger_version' => env('SWAGGER_VERSION', '3.0'),
+```
+- Use examples provided here: https://github.com/zircote/swagger-php/tree/3.x/Examples/petstore-3.0
 
 Configuration
 ============
