@@ -25,10 +25,11 @@ class PublishCommand extends Command
      *
      * @return void
      */
-    public function handle()
+    public function fire()
     {
         $this->info('Publishing all files');
-        $this->call('swagger-lume:publish-config');
+        //$this->call('swagger-lume:publish-config');
         $this->call('swagger-lume:publish-views');
+        $this->call('swagger-lume:publish-assets');
     }
 }

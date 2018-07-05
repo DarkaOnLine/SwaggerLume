@@ -37,27 +37,6 @@ class RoutesTest extends LumenTestCase
 
         $this->assertResponseOk();
 
-        $this->assertContains($this->docs_url, $response->response->getContent());
-    }
-
-    /** @test */
-    public function itCanServeAssets()
-    {
-        $response = $this->get(swagger_lume_asset('swagger-ui.css'));
-
-        $this->assertResponseOk();
-
-        $this->assertContains('.swagger-ui', $response->response->getContent());
-    }
-
-    /** @test */
-    public function userCanAccessOauth2Redirect()
-    {
-        $response = $this->get(config('swagger-lume.routes.oauth2_callback'));
-
-        $this->assertResponseOk();
-
-        $this->assertContains('swaggerUIRedirectOauth2', $response->response->getContent());
-        $this->assertContains('oauth2.auth.code', $response->response->getContent());
+        $this->assertContains($this->validator_url, $response->response->getContent());
     }
 }

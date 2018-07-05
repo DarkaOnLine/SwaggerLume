@@ -5,21 +5,21 @@ namespace SwaggerLume\Console;
 use Illuminate\Console\Command;
 use SwaggerLume\Console\Helpers\Publisher;
 
-class PublishViewsCommand extends Command
+class PublishAssetsCommand extends Command
 {
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'swagger-lume:publish-views';
+    protected $name = 'swagger-lume:publish-assets';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Publish views';
+    protected $description = 'Publish assets to public';
 
     /**
      * Execute the console command.
@@ -28,12 +28,11 @@ class PublishViewsCommand extends Command
      */
     public function fire()
     {
-        $this->info('Publishing view files');
+        $this->info('Publishing assets files');
 
-        (new Publisher($this))->publishFile(
-            __DIR__.'/../../resources/views/'.'index.blade.php',
-            config('swagger-lume.paths.views'),
-            'index.blade.php'
+        (new Publisher($this))->publishDirectory(
+            realpath(__DIR__.'/../../resources/assets'),
+            config('swagger-lume.paths.assets')
         );
     }
 }
