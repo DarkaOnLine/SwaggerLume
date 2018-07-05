@@ -1,9 +1,7 @@
-<!-- HTML for static distribution bundle build -->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-
     <title>{{$apiTitle}}</title>
     <link rel="icon" type="image/png" href="{{config('swagger-lume.paths.assets_public')}}/images/favicon-32x32.png"
           sizes="32x32"/>
@@ -158,5 +156,4 @@
 </div>
 <div id="swagger-ui-container" class="swagger-ui-wrap"></div>
 </body>
-
 </html>

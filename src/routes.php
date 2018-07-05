@@ -66,4 +66,3 @@ $app->get(config('swagger-lume.routes.api'), function () {
 
     return $response;
 });
-

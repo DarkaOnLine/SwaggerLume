@@ -20,18 +20,10 @@ class Generator
 
             File::makeDirectory($docDir);
             $excludeDirs = config('swagger-lume.paths.excludes');
-
             $swagger = \Swagger\scan($appDir, ['exclude'=>$excludeDirs]);
 
-            if (config('swagger-lume.paths.base') !== null) {
-                $swagger->basePath = config('swagger-lume.paths.base');
-            }
-
-            $filename = $docDir.'/'.config('swagger-lume.paths.docs_json');
+            $filename = $docDir.'/api-docs.json';
             $swagger->saveAs($filename);
-
-            $security = new SecurityDefinitions();
-            $security->generate($filename);
         }
     }
 

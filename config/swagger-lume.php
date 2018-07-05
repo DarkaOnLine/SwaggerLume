@@ -1,14 +1,20 @@
 <?php
 
 return [
+
     'api' => [
         /*
         |--------------------------------------------------------------------------
         | Edit to set the api's title
         |--------------------------------------------------------------------------
          */
-
         'title' => 'WaveRFID API',
+        /*
+        |--------------------------------------------------------------------------
+        | Edit to set the api's version number
+        |--------------------------------------------------------------------------
+         */
+        'version' => env('DEFAULT_API_VERSION', '1'),
     ],
 
     'routes' => [
@@ -17,40 +23,13 @@ return [
         | Route for accessing api documentation interface
         |--------------------------------------------------------------------------
          */
-        'api' => '/api/documentation',
-
+        'api' => 'api/documentation',
         /*
         |--------------------------------------------------------------------------
         | Route for accessing parsed swagger annotations.
         |--------------------------------------------------------------------------
          */
-        'docs' => '/docs',
-
-        /*
-        |--------------------------------------------------------------------------
-        | Route for Oauth2 authentication callback.
-        |--------------------------------------------------------------------------
-        */
-        'oauth2_callback' => '/api/oauth2-callback',
-
-        /*
-        |--------------------------------------------------------------------------
-        | Route for serving assets
-        |--------------------------------------------------------------------------
-        */
-        'assets' => '/swagger-ui-assets',
-
-        /*
-        |--------------------------------------------------------------------------
-        | Middleware allows to prevent unexpected access to API documentation
-        |--------------------------------------------------------------------------
-         */
-        'middleware' => [
-            'api' => [],
-            'asset' => [],
-            'docs' => [],
-            'oauth2_callback' => [],
-        ],
+        'docs' => 'docs',
     ],
 
     'paths' => [
@@ -63,13 +42,6 @@ return [
 
         /*
         |--------------------------------------------------------------------------
-        | File name of the generated json documentation file
-        |--------------------------------------------------------------------------
-        */
-        'docs_json' => 'api-docs.json',
-
-        /*
-        |--------------------------------------------------------------------------
         | Absolute path to directory containing the swagger annotations are stored.
         |--------------------------------------------------------------------------
          */
@@ -77,17 +49,17 @@ return [
 
         /*
         |--------------------------------------------------------------------------
-        | Absolute path to directories that you would like to exclude from swagger generation
+        | Absolute path to directory where to export assets
         |--------------------------------------------------------------------------
          */
-        'excludes' => [],
+        'assets' => base_path('public/vendor/swagger-lume'),
 
         /*
         |--------------------------------------------------------------------------
-        | Edit to set the swagger scan base path
+        | Path to assets public directory
         |--------------------------------------------------------------------------
-        */
-        'base' => env('L5_SWAGGER_BASE_PATH', null),
+         */
+        'assets_public' => '/vendor/swagger-lume',
 
         /*
         |--------------------------------------------------------------------------
@@ -95,35 +67,13 @@ return [
         |--------------------------------------------------------------------------
          */
         'views' => base_path('resources/views/vendor/swagger-lume'),
-    ],
 
-    /*
-    |--------------------------------------------------------------------------
-    | API security definitions. Will be generated into documentation file.
-    |--------------------------------------------------------------------------
-    */
-    'security' => [
         /*
         |--------------------------------------------------------------------------
-        | Examples of Security definitions
+        | Absolute path to directories that you would like to exclude from swagger generation
         |--------------------------------------------------------------------------
+         */
         'excludes' => ['swagger-lume'],
-        /* Open API 3.0 support
-        'passport' => [ // Unique name of security
-            'type' => 'oauth2', // The type of the security scheme. Valid values are "basic", "apiKey" or "oauth2".
-            'description' => 'Laravel passport oauth2 security.',
-            'in' => 'header',
-            'scheme' => 'https',
-            'flows' => [
-                "password" => [
-                    "authorizationUrl" => config('app.url') . '/oauth/authorize',
-                    "tokenUrl" => config('app.url') . '/oauth/token',
-                    "refreshUrl" => config('app.url') . '/token/refresh',
-                    "scopes" => []
-                ],
-            ],
-        ],
-        */
     ],
 
     /*
@@ -138,7 +88,7 @@ return [
     | Edit to set the swagger version number
     |--------------------------------------------------------------------------
      */
-    'swagger_version' => env('SWAGGER_VERSION', '3.0'),
+    'swagger_version' => env('SWAGGER_VERSION', '2.0'),
 
     /*
     |--------------------------------------------------------------------------
@@ -149,31 +99,53 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Configs plugin allows to fetch external configs instead of passing them to SwaggerUIBundle.
-    | See more at: https://github.com/swagger-api/swagger-ui#configs-plugin
+    | Edit to change layout of GUI ( 'none', 'list' or 'full')
     |--------------------------------------------------------------------------
     */
-
-    'additional_config_url' => null,
+    'docExpansion' => env('SWAGGER_DOC_EXPANSION', 'none'),
 
     /*
     |--------------------------------------------------------------------------
-    | Apply a sort to the operation list of each API. It can be 'alpha' (sort by paths alphanumerically),
-    | 'method' (sort by HTTP method).
-    | Default is the order returned by the server unchanged.
+    | Edit to change the maximum number of characters to highlight code.
     |--------------------------------------------------------------------------
     */
-
-    'operations_sort' => env('L5_SWAGGER_OPERATIONS_SORT', null),
+    'highlightThreshold' => env('SWAGGER_HIGHLIGHT_THRESHOLD', 5000),
 
     /*
     |--------------------------------------------------------------------------
-    | Uncomment to pass the validatorUrl parameter to SwaggerUi init on the JS
-    | side.  A null value here disables validation.
+    | Edit to change the maximum number of characters to highlight code.
     |--------------------------------------------------------------------------
     */
+    'apisSorter' => env('SWAGGER_API_SORTER', 'alpha'),
 
-    'validator_url' => null,
+    /*
+     |--------------------------------------------------------------------------
+     | Uncomment to pass the validatorUrl parameter to SwaggerUi init on the JS
+     | side.  A null value here disables validation.  A string will override
+     | the default url.  If not specified, behavior is default and validation
+     | is enabled.
+     |--------------------------------------------------------------------------
+     */
+    // 'validatorUrl' => null,
+
+    'headers' => [
+        /*
+        |--------------------------------------------------------------------------
+        | Uncomment to add response headers when swagger is generated
+        |--------------------------------------------------------------------------
+         */
+        /*"view" => [
+        'Content-Type' => 'text/plain'
+        ],*/
+        /*
+        |--------------------------------------------------------------------------
+        | Uncomment to add request headers when swagger performs requests
+        |--------------------------------------------------------------------------
+         */
+        /*"request" => [
+    'TestMe' => 'testValue'
+    ],*/
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -181,6 +153,7 @@ return [
     |--------------------------------------------------------------------------
      */
     'constants' => [
-        // 'SWAGGER_LUME_CONST_HOST' => env('SWAGGER_LUME_CONST_HOST', 'http://my-default-host.com'),
+        //'SWAGGER_LUME_CONST_HOST' => env('SWAGGER_LUME_CONST_HOST', 'http://my-default-host.com'),
     ],
+
 ];
