@@ -18,7 +18,7 @@ class LumenTestCase extends TestCase
 
     public $docs_url = 'http://localhost/docs';
 
-    public function tearDown()
+    public function tearDown() :void
     {
         if (file_exists($this->jsonDocsFile())) {
             unlink($this->jsonDocsFile());
@@ -50,9 +50,9 @@ class LumenTestCase extends TestCase
 
             if (isset($components['path'])) {
                 $server = array_merge($server, [
-                'SCRIPT_FILENAME' => $components['path'],
-                'SCRIPT_NAME' => $components['path'],
-            ]);
+                    'SCRIPT_FILENAME' => $components['path'],
+                    'SCRIPT_NAME' => $components['path'],
+                ]);
             }
 
             $app->instance('request', \Illuminate\Http\Request::create(

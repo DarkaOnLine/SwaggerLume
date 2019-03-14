@@ -39,7 +39,8 @@
  *         flow="password",
  *         authorizationUrl="/oauth/authorize",
  *         tokenUrl="/oauth/token",
- *         refreshUrl="/oauth/token/refresh"
+ *         refreshUrl="/oauth/token/refresh",
+ *         scopes={}
  *     )
  * )
  */
