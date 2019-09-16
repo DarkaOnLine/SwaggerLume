@@ -19,8 +19,8 @@ class GeneratorTest extends LumenTestCase
 
         $this->assertResponseOk();
 
-        $this->assertContains('SwaggerLume', $response->response->getContent());
-        $this->assertContains('my-default-host.com', $response->response->getContent());
+        $this->assertStringContainsString('SwaggerLume', $response->response->getContent());
+        $this->assertStringContainsString('my-default-host.com', $response->response->getContent());
     }
 
     /** @test */
@@ -44,8 +44,8 @@ class GeneratorTest extends LumenTestCase
 
         $this->assertResponseOk();
 
-        $this->assertContains('SwaggerLume', $response->response->getContent());
-        $this->assertContains('new_path', $response->response->getContent());
+        $this->assertStringContainsString('SwaggerLume', $response->response->getContent());
+        $this->assertStringContainsString('new_path', $response->response->getContent());
     }
 
     /** @test */
@@ -77,7 +77,7 @@ class GeneratorTest extends LumenTestCase
 
         $this->assertResponseOk();
 
-        $this->assertContains('validator-url.dev', $response->response->getContent());
+        $this->assertStringContainsString('validator-url.dev', $response->response->getContent());
 
         $this->assertTrue(file_exists($this->jsonDocsFile()));
     }

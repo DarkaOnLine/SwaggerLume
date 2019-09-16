@@ -37,7 +37,7 @@ class RoutesTest extends LumenTestCase
 
         $this->assertResponseOk();
 
-        $this->assertContains($this->docs_url, $response->response->getContent());
+        $this->assertStringContainsString($this->docs_url, $response->response->getContent());
     }
 
     /** @test */
@@ -47,7 +47,7 @@ class RoutesTest extends LumenTestCase
 
         $this->assertResponseOk();
 
-        $this->assertContains('.swagger-ui', $response->response->getContent());
+        $this->assertStringContainsString('.swagger-ui', $response->response->getContent());
     }
 
     /** @test */
@@ -57,7 +57,7 @@ class RoutesTest extends LumenTestCase
 
         $this->assertResponseOk();
 
-        $this->assertContains('swaggerUIRedirectOauth2', $response->response->getContent());
-        $this->assertContains('oauth2.auth.code', $response->response->getContent());
+        $this->assertStringContainsString('swaggerUIRedirectOauth2', $response->response->getContent());
+        $this->assertStringContainsString('oauth2.auth.code', $response->response->getContent());
     }
 }

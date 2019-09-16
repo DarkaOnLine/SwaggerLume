@@ -24,11 +24,11 @@ class CommandsTest extends LumenTestCase
         $fileContent = file_get_contents($this->jsonDocsFile());
 
         $this->assertJson($fileContent);
-        $this->assertContains('SwaggerLume', $fileContent);
+        $this->assertStringContainsString('SwaggerLume', $fileContent);
 
         //Check if constants are replaced
-        $this->assertContains('http://my-default-host.com', $fileContent);
-        $this->assertNotContains('SWAGGER_LUME_CONST_HOST', $fileContent);
+        $this->assertStringContainsString('http://my-default-host.com', $fileContent);
+        $this->assertStringNotContainsString('SWAGGER_LUME_CONST_HOST', $fileContent);
     }
 
     /** @test */

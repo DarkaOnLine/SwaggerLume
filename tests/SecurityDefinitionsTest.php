@@ -34,7 +34,7 @@ class SecurityDefinitionsTest extends LumenTestCase
 
         $this->assertResponseOk();
 
-        $this->assertContains('new_api_key_securitye', $response->response->getContent());
+        $this->assertStringContainsString('new_api_key_securitye', $response->response->getContent());
         $this->seeJson($security);
     }
 
@@ -69,8 +69,8 @@ class SecurityDefinitionsTest extends LumenTestCase
 
         $content = $response->response->getContent();
 
-        $this->assertContains('new_api_key_security', $content);
-        $this->assertContains('oauth2', $content);
+        $this->assertStringContainsString('new_api_key_security', $content);
+        $this->assertStringContainsString('oauth2', $content);
         $this->seeJson($security);
     }
 }
