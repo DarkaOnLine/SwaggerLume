@@ -2,11 +2,11 @@
 
 namespace SwaggerLume\Http\Controllers;
 
-use SwaggerLume\Generator;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Request;
 use Laravel\Lumen\Routing\Controller as BaseController;
+use SwaggerLume\Generator;
 
 class SwaggerLumeController extends BaseController
 {

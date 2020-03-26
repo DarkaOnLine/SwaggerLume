@@ -2,12 +2,12 @@
 
 namespace Tests;
 
-use Throwable;
-use Laravel\Lumen\Exceptions\Handler;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Validation\ValidationException;
+use Laravel\Lumen\Exceptions\Handler;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Throwable;
 
 class ExceptionsHandler extends Handler
 {

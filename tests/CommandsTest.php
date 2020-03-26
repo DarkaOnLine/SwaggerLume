@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Artisan;
 
 class CommandsTest extends LumenTestCase
 {
-    public function setUp() :void
+    public function setUp(): void
     {
         parent::setUp();
 

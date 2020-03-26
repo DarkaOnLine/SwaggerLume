@@ -2,8 +2,8 @@
 
 namespace Tests;
 
-use Laravel\Lumen\Console\Kernel;
 use Illuminate\Console\Scheduling\Schedule;
+use Laravel\Lumen\Console\Kernel;
 
 class ConsoleKernel extends Kernel
 {
