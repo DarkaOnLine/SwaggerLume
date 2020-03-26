@@ -2,10 +2,10 @@
 
 namespace Tests;
 
-use Laravel\Lumen\Application;
-use Laravel\Lumen\Testing\TestCase;
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Contracts\Debug\ExceptionHandler;
+use Laravel\Lumen\Application;
+use Laravel\Lumen\Testing\TestCase;
 use SwaggerLume\ServiceProvider as SwaggerLumeServiceProvider;
 
 class LumenTestCase extends TestCase
@@ -18,7 +18,7 @@ class LumenTestCase extends TestCase
 
     public $docs_url = 'http://localhost/docs';
 
-    public function tearDown() :void
+    public function tearDown(): void
     {
         if (file_exists($this->jsonDocsFile())) {
             unlink($this->jsonDocsFile());
