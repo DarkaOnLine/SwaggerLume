@@ -22,6 +22,7 @@ Installation
  5.5.x      | 3         | 2.0                        | ``` composer require "darkaonline/swagger-lume:5.5.*" ```
  5.6 - 5.7  | 3         | 2.0, 3.0                   | ``` composer require "darkaonline/swagger-lume:5.6.*" ```
  6.0        | 3         | 2.0, 3.0                   | ``` composer require "darkaonline/swagger-lume:6.*" ```
+ 7.0        | 3         | 2.0, 3.0                   | ``` composer require "darkaonline/swagger-lume:7.*" ```
 
 - Open your `bootstrap/app.php` file and:
 
