@@ -41,7 +41,6 @@ add this line in `Register Service Providers` section:
     $app->register(\SwaggerLume\ServiceProvider::class);
 ```
 
-
 - Run `php artisan swagger-lume:publish-config` to publish configs (`config/swagger-lume.php`)
 - Make configuration changes if needed
 - Run `php artisan swagger-lume:publish` to publish everything
@@ -89,7 +88,6 @@ Migrate from 2.0 to 3.0 or 5.5
 - Remove `resources/views/vendor/swagger-lume` directory
 - Run `swagger-lume:publish` to publish new swagger-ui view and configuration
 - Edit your `config/swagger-lume.php` file
-
 
 Swagger-php
 ======================
