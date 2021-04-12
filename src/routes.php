@@ -1,6 +1,6 @@
 <?php
 
-$route->get(config('swagger-lume.routes.docs'), [
+$route->get(config('swagger-lume.routes.docs').'/{jsonFile:(?!asset).*}', [
     'as' => 'swagger-lume.docs',
     'middleware' => config('swagger-lume.routes.middleware.docs', []),
     'uses' => 'Http\Controllers\SwaggerLumeController@docs',
