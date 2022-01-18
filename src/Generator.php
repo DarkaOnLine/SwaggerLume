@@ -8,9 +8,9 @@ class Generator
 {
     public static function generateDocs()
     {
-        $appDir = config('swagger-lume.paths.annotations');
+        $appDirs = config('swagger-lume.paths.annotations');
         $docDir = config('swagger-lume.paths.docs');
-        if (! File::exists($docDir) || is_writable($docDir)) {
+        if (!File::exists($docDir) || is_writable($docDir)) {
             // delete all existing documentation
             if (File::exists($docDir)) {
                 File::deleteDirectory($docDir);
@@ -22,9 +22,13 @@ class Generator
             $excludeDirs = config('swagger-lume.paths.excludes');
 
             if (version_compare(config('swagger-lume.swagger_version'), '3.0', '>=')) {
-                $swagger = \OpenApi\scan($appDir, ['exclude' => $excludeDirs]);
+                $appDirsWithExclude = array_map(function ($path) use ($excludeDirs) {
+                    return \OpenApi\Util::finder($path, $excludeDirs);
+                }, $appDirs);
+
+                $swagger = \OpenApi\Generator::scan($appDirsWithExclude);
             } else {
-                $swagger = \Swagger\scan($appDir, ['exclude' => $excludeDirs]);
+                $swagger = \Swagger\scan($appDirs[0], ['exclude' => $excludeDirs]);
             }
 
             if (config('swagger-lume.paths.base') !== null) {
@@ -41,7 +45,7 @@ class Generator
 
     protected static function defineConstants(array $constants)
     {
-        if (! empty($constants)) {
+        if (!empty($constants)) {
             foreach ($constants as $key => $value) {
                 defined($key) || define($key, $value);
             }
