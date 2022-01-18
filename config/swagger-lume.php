@@ -69,10 +69,12 @@ return [
 
         /*
         |--------------------------------------------------------------------------
-        | Absolute path to directory containing the swagger annotations are stored.
+        | Absolute paths to directories where the swagger annotations are stored.
+        | For Swagger versions < 3.0, only one directory is supported, and only the
+        | first item of the array will be considered.
         |--------------------------------------------------------------------------
          */
-        'annotations' => base_path('app'),
+        'annotations' => [base_path('app')],
 
         /*
         |--------------------------------------------------------------------------
