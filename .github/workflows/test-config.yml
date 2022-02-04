@@ -49,7 +49,7 @@ jobs:
       run: |
         composer require 'laravel/lumen-framework:6.*' --no-interaction --no-update
         composer require 'zircote/swagger-php:2.*' --no-interaction --no-update
-      if: matrix.php == '7.2' && matrix.swagger-lume-flags == 'lumen-6-swagger-2'
+      if: matrix.php == '7.3' && matrix.swagger-lume-flags == 'lumen-6-swagger-2'
 
     - name: Lumen 7 && Swagger 2
       env:
@@ -57,7 +57,7 @@ jobs:
       run: |
         composer require 'laravel/lumen-framework:7.*' --no-interaction --no-update
         composer require 'zircote/swagger-php:2.*' --no-interaction --no-update
-      if: matrix.php == '7.2' && matrix.swagger-lume-flags == 'lumen-7-swagger-2'
+      if: matrix.php == '7.3' && matrix.swagger-lume-flags == 'lumen-7-swagger-2'
 
     - name: Lumen 7 && Swagger 3
       env:
@@ -65,7 +65,7 @@ jobs:
       run: |
         composer require 'laravel/lumen-framework:7.*' --no-interaction --no-update
         composer require 'zircote/swagger-php:3.*' --no-interaction --no-update
-      if: (matrix.php == '7.2' || matrix.php == '8.0') && matrix.swagger-lume-flags == 'lumen-7-swagger-3'
+      if: (matrix.php == '7.3' || matrix.php == '8.0') && matrix.swagger-lume-flags == 'lumen-7-swagger-3'
 
     - name: Prepare enviroment
       run: |
