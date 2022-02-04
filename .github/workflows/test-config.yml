@@ -36,7 +36,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: vendor
-        key: ${{ runner.os }}-php-${{ matrix.php }}-${{ hashFiles('**/composer.lock') }}
+        key: ${{ runner.os }}-php-${{ matrix.php }}-swaggerlumer-${{ matrix.swagger-lume-flags }}-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
           ${{ runner.os }}-php-
 
@@ -66,17 +66,6 @@ jobs:
         composer require 'laravel/lumen-framework:7.*' --no-interaction --no-update
         composer require 'zircote/swagger-php:3.*' --no-interaction --no-update
       if: (matrix.php == '7.3' || matrix.php == '8.0') && matrix.swagger-lume-flags == 'lumen-7-swagger-3'
-
-    - name: Prepare enviroment
-      run: |
-        sudo chown -R $USER:$USER .
-        sudo chmod -R g+rw .
-        mkdir -p tests/storage/logs/test-reports
-        mkdir -p vendor/orchestra/testbench-core/laravel/vendor/swagger-api
-        mkdir -p vendor/orchestra/testbench-core/laravel/vendor/swagger-api/swagger-ui
-        mkdir -p vendor/orchestra/testbench-core/laravel/vendor/swagger-api/swagger-ui/dist
-        sudo chown -R $USER:$USER vendor/orchestra/testbench-core/laravel/vendor/swagger-api
-        chmod -R 777 vendor/orchestra/testbench-core/laravel/vendor/swagger-api
 
     - name: Prepare code climate
       run: |
