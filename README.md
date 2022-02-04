@@ -1,5 +1,5 @@
 [![Total Downloads](https://poser.pugx.org/DarkaOnLine/swagger-lume/downloads.svg)](https://packagist.org/packages/DarkaOnLine/swagger-lume)
-[![Build Status](https://travis-ci.org/DarkaOnLine/SwaggerLume.svg?branch=master)](https://travis-ci.org/DarkaOnLine/SwaggerLume)
+![Build Status](https://github.com/DarkaOnLine/SwaggerLume/actions/workflows/test-config.yml/badge.svg?branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/DarkaOnLine/SwaggerLume/badge.svg?branch=master)](https://coveralls.io/github/DarkaOnLine/SwaggerLume?branch=master)
 [![Code Climate](https://codeclimate.com/github/DarkaOnLine/SwaggerLume/badges/gpa.svg)](https://codeclimate.com/github/DarkaOnLine/SwaggerLume)
 [![StyleCI](https://styleci.io/repos/50113229/shield)](https://styleci.io/repos/50113229)
