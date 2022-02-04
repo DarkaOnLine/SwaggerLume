@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [ '7.2', '8.0', '8.1' ]
+        php: [ '7.3', '8.0', '8.1' ]
         swagger-lume-flags:  ['latest', 'lumen-6-swagger-2', 'lumen-7-swagger-2', 'lumen-7-swagger-3']
 
     name: PHP ${{ matrix.php }} - ${{ matrix.swagger-lume-flags }}
