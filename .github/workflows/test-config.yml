@@ -100,4 +100,4 @@ jobs:
       env:
         COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: vendor/bin/php-coveralls --coverage_clover=clover.xml -v
-      if: matrix.php == '8.1' && swagger-lume-flags == 'latest'
+      if: matrix.php == '8.1' && matrix.swagger-lume-flags == 'latest'
