@@ -1,5 +1,6 @@
 .idea
 .phpunit.result.cache
+.DS_Store
 /tests/config
 /tests/public
 /tests/resources
