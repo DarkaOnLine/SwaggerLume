@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  SWAGGER_VERSION: 3.0
+  SWAGGER_VERSION: '3.0'
 
 jobs:
   build:
@@ -45,7 +45,7 @@ jobs:
 
     - name: Lumen 6 && Swagger 2
       env:
-        SWAGGER_VERSION: 2.0
+        SWAGGER_VERSION: '2.0'
       run: |
         composer require 'laravel/lumen-framework:6.*' --no-interaction --no-update
         composer require 'zircote/swagger-php:2.*' --no-interaction --no-update
@@ -53,7 +53,7 @@ jobs:
 
     - name: Lumen 7 && Swagger 2
       env:
-        SWAGGER_VERSION: 2.0
+        SWAGGER_VERSION: '2.0'
       run: |
         composer require 'laravel/lumen-framework:7.*' --no-interaction --no-update
         composer require 'zircote/swagger-php:2.*' --no-interaction --no-update
@@ -61,7 +61,7 @@ jobs:
 
     - name: Lumen 7 && Swagger 3
       env:
-        SWAGGER_VERSION: 3.0
+        SWAGGER_VERSION: '3.0'
       run: |
         composer require 'laravel/lumen-framework:7.*' --no-interaction --no-update
         composer require 'zircote/swagger-php:3.*' --no-interaction --no-update
