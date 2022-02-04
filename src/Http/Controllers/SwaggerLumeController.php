@@ -13,8 +13,7 @@ class SwaggerLumeController extends BaseController
     /**
      * Dump api-docs.json content endpoint.
      *
-     * @param null $jsonFile
-     *
+     * @param  null  $jsonFile
      * @return \Illuminate\Http\Response
      */
     public function docs($jsonFile = null)
