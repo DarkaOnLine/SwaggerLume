@@ -9,7 +9,7 @@ class SecurityDefinitions
     /**
      * Reads in the l5-swagger configuration and appends security settings to documentation.
      *
-     * @param string $filename The path to the generated json documentation
+     * @param  string  $filename  The path to the generated json documentation
      */
     public function generate($filename)
     {
@@ -33,9 +33,8 @@ class SecurityDefinitions
     /**
      * Inject security settings for Swagger 1 & 2.
      *
-     * @param Collection $documentation The parse json
-     * @param array $securityConfig The security settings from l5-swagger
-     *
+     * @param  Collection  $documentation  The parse json
+     * @param  array  $securityConfig  The security settings from l5-swagger
      * @return Collection
      */
     public function generateSwaggerApi(Collection $documentation, array $securityConfig)
@@ -57,9 +56,8 @@ class SecurityDefinitions
     /**
      * Inject security settings for OpenApi 3.
      *
-     * @param Collection $documentation The parse json
-     * @param array $securityConfig The security settings from l5-swagger
-     *
+     * @param  Collection  $documentation  The parse json
+     * @param  array  $securityConfig  The security settings from l5-swagger
      * @return Collection
      */
     public function generateOpenApi(Collection $documentation, array $securityConfig)
@@ -89,7 +87,6 @@ class SecurityDefinitions
      * Converts an array to an object.
      *
      * @param $array
-     *
      * @return object
      */
     public static function arrayToObject($array)

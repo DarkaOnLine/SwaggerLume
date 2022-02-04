@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  l5-swagger-app:
+    image: swagger-lume-app
+    container_name: swaggerLume-app
+    restart: "no"
+    build:
+      args:
+        user: swaggerLume
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+      target: local
+    volumes:
+      - swaggerLume-app-volume:/app/swaggerLume-app:rw
+      - ./:/app:rw
+    ports:
+      - "7777:80"
+
+volumes:
+  swaggerLume-app-volume:
+
+networks:
+  default:
+    name: swaggerLume-app

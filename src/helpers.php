@@ -6,9 +6,9 @@ if (! function_exists('swagger_ui_dist_path')) {
     /**
      * Returns swagger-ui composer dist path.
      *
-     * @param null $asset
-     *
+     * @param  null  $asset
      * @return string
+     *
      * @throws \SwaggerLume\Exceptions\SwaggerLumeException
      */
     function swagger_ui_dist_path($asset = null)
@@ -45,8 +45,8 @@ if (! function_exists('swagger_lume_asset')) {
      * Returns asset from swagger-ui composer package.
      *
      * @param $asset string
-     *
      * @return string
+     *
      * @throws \SwaggerLume\Exceptions\SwaggerLumeException
      */
     function swagger_lume_asset($asset)
