@@ -20,7 +20,11 @@ class SwaggerLumeController extends BaseController
     {
         $filePath = config('swagger-lume.paths.docs').'/'.
             (! is_null($jsonFile) ? $jsonFile : config('swagger-lume.paths.docs_json'));
-
+        
+        if (config('swagger-lume.generate_always') && ! File::exists($filePath)) {
+            Generator::generateDocs();
+        }
+        
         if (! File::exists($filePath)) {
             abort(404, 'Cannot find '.$filePath);
         }
