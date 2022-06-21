@@ -22,7 +22,20 @@ class SwaggerLumeController extends BaseController
             (! is_null($jsonFile) ? $jsonFile : config('swagger-lume.paths.docs_json'));
         
         if (config('swagger-lume.generate_always') && ! File::exists($filePath)) {
-            Generator::generateDocs();
+           try {               
+                Generator::generateDocs();
+            } catch (\Exception $e) {
+                Log::error($e);
+
+                abort(
+                    404,
+                    sprintf(
+                        'Unable to generate documentation file to: "%s". Please make sure directory is writable. Error: %s',
+                        $filePath,
+                        $e->getMessage()
+                    )
+                );
+            }
         }
         
         if (! File::exists($filePath)) {
