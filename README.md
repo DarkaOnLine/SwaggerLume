@@ -48,7 +48,7 @@ add this line in `Register Service Providers` section:
 
 Using [OpenApi 3.0 Specification](https://github.com/OAI/OpenAPI-Specification)
 ============
-If you would like to use lattes OpenApi specifications (originally known as the Swagger Specification) in you project you should:
+If you would like to use latest OpenApi specifications (originally known as the Swagger Specification) in your project you should:
 - Explicitly require `swagger-php` version 3.* in your projects composer by running:
 ```bash
 composer require 'zircote/swagger-php:3.*'
