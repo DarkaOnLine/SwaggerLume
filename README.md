@@ -7,9 +7,9 @@
 SwaggerLume
 ==========
 
-Swagger 2.0 for Lumen 5
+Swagger 2.0-3.0 for Lumen
 
-This package is a wrapper of [Swagger-php](https://github.com/zircote/swagger-php) and [swagger-ui](https://github.com/swagger-api/swagger-ui) adapted to work with Lumen 5.
+This package is a wrapper of [Swagger-php](https://github.com/zircote/swagger-php) and [swagger-ui](https://github.com/swagger-api/swagger-ui) adapted to work with Lumen.
 
 Installation
 ============
@@ -24,6 +24,7 @@ Installation
  6.0        | 3         | 2.0, 3.0                   | ``` composer require "darkaonline/swagger-lume:6.*" ```
  7.0        | 3         | 2.0, 3.0                   | ``` composer require "darkaonline/swagger-lume:7.*" ```
  8.0        | 3         | 2.0, 3.0                   | ``` composer require "darkaonline/swagger-lume:8.*" ```
+ 9.0        | 3         | 2.0, 3.0                   | ``` composer require "darkaonline/swagger-lume:9.*" ```
 
 - Open your `bootstrap/app.php` file and:
 
