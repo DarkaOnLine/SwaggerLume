@@ -10,6 +10,13 @@ return [
         'title' => 'Swagger Lume API',
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Add the SERVERS_API key to your .env file and separate by commas; example: https://example.com/v1/api, https://example.com/v2/api
+    |--------------------------------------------------------------------------
+     */
+    'servers' => env('SERVERS_API', null),    
+
     'routes' => [
         /*
         |--------------------------------------------------------------------------
