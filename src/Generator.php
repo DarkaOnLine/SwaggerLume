@@ -3,6 +3,7 @@
 namespace SwaggerLume;
 
 use Illuminate\Support\Facades\File;
+use OpenApi\Annotations\Server;
 
 class Generator
 {
@@ -28,7 +29,13 @@ class Generator
             }
 
             if (config('swagger-lume.paths.base') !== null) {
-                $swagger->basePath = config('swagger-lume.paths.base');
+                if (version_compare(config('swagger-lume.swagger_version'), '3.0', '>=')) {
+                    $swagger->servers = [
+                        new Server(['url' => config('swagger-lume.paths.base')]),
+                    ];
+                } else {
+                    $swagger->basePath = config('swagger-lume.paths.base');
+                }
             }
 
             $filename = $docDir.'/'.config('swagger-lume.paths.docs_json');
