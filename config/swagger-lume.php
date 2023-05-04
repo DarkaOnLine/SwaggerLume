@@ -201,4 +201,12 @@ return [
     'constants' => [
         'SWAGGER_LUME_CONST_HOST' => env('SWAGGER_LUME_CONST_HOST', 'http://my-default-host.com'),
     ],
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Force assets to be loaded over HTTPS (Solves mixed content errors when application is behind a load balancer.
+    |--------------------------------------------------------------------------
+     */
+    
+    'force_https' => false
 ];
