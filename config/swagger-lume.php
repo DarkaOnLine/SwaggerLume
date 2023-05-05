@@ -207,6 +207,5 @@ return [
     | Force assets to be loaded over HTTPS (Solves mixed content errors when application is behind a load balancer.
     |--------------------------------------------------------------------------
      */
-    
-    'force_https' => false
+    'force_https' => false,
 ];
