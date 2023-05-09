@@ -57,6 +57,6 @@ if (! function_exists('swagger_lume_asset')) {
             throw new SwaggerLumeException(sprintf('Requested L5 Swagger asset file (%s) does not exists', $asset));
         }
 
-        return route('swagger-lume.asset', ['asset' => $asset, 'v' => md5($file)], !is_null(config('swagger-lume.force_https')) ? config('swagger-lume.force_https') : app('request')->secure());
+        return route('swagger-lume.asset', ['asset' => $asset, 'v' => md5($file)], config('swagger-lume.force_https')) ?? app('request')->secure();
     }
 }
