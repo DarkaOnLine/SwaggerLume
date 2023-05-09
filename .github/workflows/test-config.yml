@@ -17,7 +17,7 @@ jobs:
       fail-fast: true
       matrix:
         php: [ '7.3', '8.0', '8.1' ]
-        swagger-lume-flags:  ['latest', 'lumen-6-swagger-2', 'lumen-7-swagger-2', 'lumen-7-swagger-3']
+        swagger-lume-flags:  ['latest', 'lumen-6-swagger-2', 'lumen-7-swagger-2', 'lumen-7-swagger-3', 'lumen-8-swagger-3', 'lumen-9-swagger-3', 'lumen-10-swagger-3', 'lumen-10-swagger-3-ui-4']
 
     name: PHP ${{ matrix.php }} - ${{ matrix.swagger-lume-flags }}
 
@@ -98,7 +98,7 @@ jobs:
         composer require 'laravel/lumen-framework:10.*' --no-interaction --no-update
         composer require 'zircote/swagger-php:3.*' --no-interaction --no-update
         composer require 'swagger-api/swagger-ui:4.*' --no-interaction --no-update
-      if: (matrix.php == '7.3' || matrix.php == '8.0') && matrix.swagger-lume-flags == 'lumen-10-swagger-3-ui-4'
+      if: (matrix.php == '8.1') && matrix.swagger-lume-flags == 'lumen-10-swagger-3-ui-4'
 
     - name: Prepare code climate
       run: |
