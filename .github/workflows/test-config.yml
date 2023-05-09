@@ -67,6 +67,39 @@ jobs:
         composer require 'zircote/swagger-php:3.*' --no-interaction --no-update
       if: (matrix.php == '7.3' || matrix.php == '8.0') && matrix.swagger-lume-flags == 'lumen-7-swagger-3'
 
+    - name: Lumen 8 && Swagger 3
+      env:
+        SWAGGER_VERSION: '3.0'
+      run: |
+        composer require 'laravel/lumen-framework:8.*' --no-interaction --no-update
+        composer require 'zircote/swagger-php:3.*' --no-interaction --no-update
+      if: (matrix.php == '7.3' || matrix.php == '8.0') && matrix.swagger-lume-flags == 'lumen-8-swagger-3'
+
+    - name: Lumen 9 && Swagger 3
+      env:
+        SWAGGER_VERSION: '3.0'
+      run: |
+        composer require 'laravel/lumen-framework:9.*' --no-interaction --no-update
+        composer require 'zircote/swagger-php:3.*' --no-interaction --no-update
+      if: (matrix.php == '7.3' || matrix.php == '8.0') && matrix.swagger-lume-flags == 'lumen-9-swagger-3'
+
+    - name: Lumen 10 && Swagger 3
+      env:
+        SWAGGER_VERSION: '3.0'
+      run: |
+        composer require 'laravel/lumen-framework:10.*' --no-interaction --no-update
+        composer require 'zircote/swagger-php:3.*' --no-interaction --no-update
+      if: (matrix.php == '7.3' || matrix.php == '8.0') && matrix.swagger-lume-flags == 'lumen-10-swagger-3'
+
+    - name: Lumen 10 && Swagger 3 && Swagger-UI 4
+      env:
+        SWAGGER_VERSION: '3.0'
+      run: |
+        composer require 'laravel/lumen-framework:10.*' --no-interaction --no-update
+        composer require 'zircote/swagger-php:3.*' --no-interaction --no-update
+        composer require 'swagger-api/swagger-ui:4.*' --no-interaction --no-update
+      if: (matrix.php == '7.3' || matrix.php == '8.0') && matrix.swagger-lume-flags == 'lumen-10-swagger-3-ui-4'
+
     - name: Prepare code climate
       run: |
         curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
