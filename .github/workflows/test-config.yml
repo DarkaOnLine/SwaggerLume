@@ -16,13 +16,17 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [ '7.3', '8.0', '8.1' ]
+        php: [ '7.3', '8.0.2', '8.1' ]
         swagger-lume-flags:  ['latest', 'lumen-6-swagger-2', 'lumen-7-swagger-2', 'lumen-7-swagger-3', 'lumen-8-swagger-3', 'lumen-9-swagger-3', 'lumen-10-swagger-3', 'lumen-10-swagger-3-ui-4']
 
     name: PHP ${{ matrix.php }} - ${{ matrix.swagger-lume-flags }}
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Info
+      run: |
+        echo ${{ matrix.php }} - ${{ matrix.swagger-lume-flags }}
 
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
@@ -49,7 +53,7 @@ jobs:
       run: |
         composer require 'laravel/lumen-framework:6.*' --no-interaction --no-update
         composer require 'zircote/swagger-php:2.*' --no-interaction --no-update
-      if: matrix.php == '7.3' && matrix.swagger-lume-flags == 'lumen-6-swagger-2'
+      if: matrix.php == '7.3.*' && matrix.swagger-lume-flags == 'lumen-6-swagger-2'
 
     - name: Lumen 7 && Swagger 2
       env:
@@ -57,7 +61,7 @@ jobs:
       run: |
         composer require 'laravel/lumen-framework:7.*' --no-interaction --no-update
         composer require 'zircote/swagger-php:2.*' --no-interaction --no-update
-      if: matrix.php == '7.3' && matrix.swagger-lume-flags == 'lumen-7-swagger-2'
+      if: matrix.php == '7.3.*' && matrix.swagger-lume-flags == 'lumen-7-swagger-2'
 
     - name: Lumen 7 && Swagger 3
       env:
@@ -65,7 +69,7 @@ jobs:
       run: |
         composer require 'laravel/lumen-framework:7.*' --no-interaction --no-update
         composer require 'zircote/swagger-php:3.*' --no-interaction --no-update
-      if: (matrix.php == '7.3' || matrix.php == '8.0') && matrix.swagger-lume-flags == 'lumen-7-swagger-3'
+      if: (matrix.php == '7.3.*' || matrix.php == '8.0.*') && matrix.swagger-lume-flags == 'lumen-7-swagger-3'
 
     - name: Lumen 8 && Swagger 3
       env:
@@ -73,7 +77,7 @@ jobs:
       run: |
         composer require 'laravel/lumen-framework:8.*' --no-interaction --no-update
         composer require 'zircote/swagger-php:3.*' --no-interaction --no-update
-      if: (matrix.php == '7.3' || matrix.php == '8.0') && matrix.swagger-lume-flags == 'lumen-8-swagger-3'
+      if: (matrix.php == '7.3.*' || matrix.php == '8.0.*') && matrix.swagger-lume-flags == 'lumen-8-swagger-3'
 
     - name: Lumen 9 && Swagger 3
       env:
@@ -81,7 +85,7 @@ jobs:
       run: |
         composer require 'laravel/lumen-framework:9.*' --no-interaction --no-update
         composer require 'zircote/swagger-php:3.*' --no-interaction --no-update
-      if: (matrix.php == '7.3' || matrix.php == '8.0') && matrix.swagger-lume-flags == 'lumen-9-swagger-3'
+      if: (matrix.php == '8.0.*') && matrix.swagger-lume-flags == 'lumen-9-swagger-3'
 
     - name: Lumen 10 && Swagger 3
       env:
@@ -89,7 +93,7 @@ jobs:
       run: |
         composer require 'laravel/lumen-framework:10.*' --no-interaction --no-update
         composer require 'zircote/swagger-php:3.*' --no-interaction --no-update
-      if: (matrix.php == '7.3' || matrix.php == '8.0') && matrix.swagger-lume-flags == 'lumen-10-swagger-3'
+      if: (matrix.php == '8.1.*') && matrix.swagger-lume-flags == 'lumen-10-swagger-3'
 
     - name: Lumen 10 && Swagger 3 && Swagger-UI 4
       env:
@@ -98,14 +102,14 @@ jobs:
         composer require 'laravel/lumen-framework:10.*' --no-interaction --no-update
         composer require 'zircote/swagger-php:3.*' --no-interaction --no-update
         composer require 'swagger-api/swagger-ui:4.*' --no-interaction --no-update
-      if: (matrix.php == '8.1') && matrix.swagger-lume-flags == 'lumen-10-swagger-3-ui-4'
+      if: (matrix.php == '8.1.*') && matrix.swagger-lume-flags == 'lumen-10-swagger-3-ui-4'
 
     - name: Prepare code climate
       run: |
         curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
         chmod +x ./cc-test-reporter
         ./cc-test-reporter before-build
-      if: matrix.php == '8.1' && matrix.swagger-lume-flags == 'latest'
+      if: matrix.php == '8.1.*' && matrix.swagger-lume-flags == 'latest'
 
     - name: Run test suite
       run: composer run-script phpunit
