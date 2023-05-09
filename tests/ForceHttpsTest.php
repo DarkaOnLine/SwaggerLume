@@ -3,10 +3,11 @@
 namespace Tests;
 
 class ForceHttpsTest extends LumenTestCase
-{   
+{
     /** @test */
     public function defaultFromEnv()
-    {   
+    {
+        $this->assertNull(env('SWAGGER_LUME_FORCE_HTTPS'));
         $this->assertStringContainsString('http://', swagger_lume_asset('swagger-ui.css'));
     }
 
