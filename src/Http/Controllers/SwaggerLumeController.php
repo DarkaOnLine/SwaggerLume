@@ -4,6 +4,7 @@ namespace SwaggerLume\Http\Controllers;
 
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Request;
 use Laravel\Lumen\Routing\Controller as BaseController;
 use SwaggerLume\Generator;
