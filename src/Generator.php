@@ -28,6 +28,9 @@ class Generator
                 $swagger = \Swagger\scan($appDir, ['exclude' => $excludeDirs]);
             }
 
+            if(config('swagger-lume.servers'))
+                $swagger->servers = self::getServers();            
+
             if (config('swagger-lume.paths.base') !== null) {
                 if (version_compare(config('swagger-lume.swagger_version'), '3.0', '>=')) {
                     $swagger->servers = [
@@ -54,4 +57,20 @@ class Generator
             }
         }
     }
+
+    protected static function getServers() {
+
+        // Split comas
+        $servers = preg_split ("/\,/", config('swagger-lume.servers'));
+
+        // Create array with servers (versions)
+        $temp_servers = [];
+
+        foreach ($servers as $server)
+            array_push($temp_servers, ["url"=> $server]);
+
+        return $temp_servers;
+
+    }
+
 }
