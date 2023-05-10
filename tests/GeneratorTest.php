@@ -7,13 +7,14 @@ use SwaggerLume\Generator;
 class GeneratorTest extends LumenTestCase
 {
     /** @test */
-    public function canGenerateApiJsonFile()
+    public function canGenerateApiJsonAndYamlFile()
     {
         $this->setPaths();
 
         Generator::generateDocs();
 
         $this->assertTrue(file_exists($this->jsonDocsFile()));
+        $this->assertTrue(file_exists($this->yamlDocsFile()));
 
         $response = $this->get(config('swagger-lume.routes.docs'));
 
@@ -24,7 +25,7 @@ class GeneratorTest extends LumenTestCase
     }
 
     /** @test */
-    public function canGenerateApiJsonFileWithChangedBasePath()
+    public function canGenerateApiJsonAndYamlFileWithChangedBasePath()
     {
         if ($this->isOpenApi() == true) {
             $this->markTestSkipped('only for openApi 2.0');
@@ -39,6 +40,7 @@ class GeneratorTest extends LumenTestCase
         Generator::generateDocs();
 
         $this->assertTrue(file_exists($this->jsonDocsFile()));
+        $this->assertTrue(file_exists($this->yamlDocsFile()));
 
         $response = $this->get(config('swagger-lume.routes.docs'));
 

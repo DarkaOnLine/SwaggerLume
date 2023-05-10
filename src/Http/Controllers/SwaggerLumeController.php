@@ -4,7 +4,8 @@ namespace SwaggerLume\Http\Controllers;
 
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Request as RequestFacade;
 use Laravel\Lumen\Routing\Controller as BaseController;
 use SwaggerLume\Generator;
 
@@ -13,13 +14,24 @@ class SwaggerLumeController extends BaseController
     /**
      * Dump api-docs.json content endpoint.
      *
-     * @param  null  $jsonFile
+     * @param  null  $docsFile
      * @return \Illuminate\Http\Response
      */
-    public function docs($jsonFile = null)
+    public function docs()
     {
-        $filePath = config('swagger-lume.paths.docs').'/'.
-            (! is_null($jsonFile) ? $jsonFile : config('swagger-lume.paths.docs_json'));
+        $filePath = sprintf(
+            '%s/%s',
+            config('swagger-lume.paths.docs'),
+            config('swagger-lume.paths.format_to_use_for_docs') === 'json' ? config('swagger-lume.paths.docs_json') : config('swagger-lume.paths.docs_yaml')
+        );
+
+        $yaml = false;
+        $parts = explode('.', $filePath);
+
+        if (! empty($parts)) {
+            $extension = array_pop($parts);
+            $yaml = strtolower($extension) === 'yaml';
+        }
 
         if (config('swagger-lume.generate_always') && ! File::exists($filePath)) {
             try {
@@ -44,6 +56,14 @@ class SwaggerLumeController extends BaseController
 
         $content = File::get($filePath);
 
+        if ($yaml) {
+            return Response($content, 200, [
+                'Content-Type' => 'application/yaml',
+                'Content-Disposition' => 'inline',
+                'filename' => config('swagger-lume.paths.docs_yaml'),
+            ]);
+        }
+
         return new Response($content, 200, ['Content-Type' => 'application/json']);
     }
 
@@ -59,9 +79,9 @@ class SwaggerLumeController extends BaseController
         }
 
         //need the / at the end to avoid CORS errors on Homestead systems.
-        $response = new Response(
+        return new Response(
             view('swagger-lume::index', [
-                'secure' => Request::secure(),
+                'secure' => RequestFacade::secure(),
                 'urlToDocs' => route('swagger-lume.docs'),
                 'operationsSorter' => config('swagger-lume.operations_sort'),
                 'configUrl' => config('swagger-lume.additional_config_url'),
@@ -70,8 +90,6 @@ class SwaggerLumeController extends BaseController
             200,
             ['Content-Type' => 'text/html']
         );
-
-        return $response;
     }
 
     /**

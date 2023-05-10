@@ -19,7 +19,7 @@ class RoutesTest extends LumenTestCase
     {
         $jsonUrl = config('swagger-lume.routes.docs');
 
-        $this->setPaths()->crateJsonDocumentationFile();
+        $this->setPaths()->createJsonDocumentationFile();
 
         $this->get($jsonUrl);
 

@@ -69,6 +69,19 @@ return [
 
         /*
         |--------------------------------------------------------------------------
+        | File name of the generated YAML documentation file
+        |--------------------------------------------------------------------------
+         */
+
+        'docs_yaml' => 'api-docs.yaml',
+
+        /*
+        * Set this to `json` or `yaml` to determine which documentation file to use in UI
+        */
+        'format_to_use_for_docs' => env('SWAGGER_LUME__FORMAT_TO_USE_FOR_DOCS', 'json'),
+
+        /*
+        |--------------------------------------------------------------------------
         | Absolute path to directory containing the swagger annotations are stored.
         |--------------------------------------------------------------------------
          */
@@ -150,6 +163,14 @@ return [
     |--------------------------------------------------------------------------
      */
     'generate_always' => env('SWAGGER_GENERATE_ALWAYS', false),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Turn this on to generate a copy of documentation in yaml format
+    |--------------------------------------------------------------------------
+     */
+
+    'generate_yaml_copy' => env('SWAGGER_LUME_GENERATE_YAML_COPY', false),
 
     /*
     |--------------------------------------------------------------------------

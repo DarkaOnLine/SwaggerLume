@@ -1,7 +1,7 @@
 #
 # Base install
 #
-FROM amd64/php:8.0-apache as base
+FROM amd64/php:8.1-apache as base
 
 LABEL vendor="SwaggerLume"
 
@@ -60,7 +60,7 @@ WORKDIR /app/swaggerLume-app
 
 RUN /usr/local/bin/php -dxdebug.mode=off /usr/local/bin/composer config repositories.swagger-lume path '../'
 
-RUN /usr/local/bin/php -dxdebug.mode=off /usr/local/bin/composer require 'DarkaOnLine/swagger-lume:dev-master'
+RUN /usr/local/bin/php -dxdebug.mode=off /usr/local/bin/composer require 'darkaonline/swagger-lume:dev-master'
 
 RUN ln -s /app/tests/storage/annotations/ app/annotations
 
