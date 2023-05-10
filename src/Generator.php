@@ -4,9 +4,9 @@ namespace SwaggerLume;
 
 use Illuminate\Support\Facades\File;
 use OpenApi\Annotations\Server;
+use OpenApi\Generator as OpenApiGenerator;
 use OpenApi\Util;
 use Symfony\Component\Yaml\Dumper as YamlDumper;
-use OpenApi\Generator as OpenApiGenerator;
 use Symfony\Component\Yaml\Yaml;
 
 class Generator
@@ -67,7 +67,7 @@ class Generator
     {
         if (config('swagger-lume.generate_yaml_copy')) {
             $path = sprintf('%s/%s', config('swagger-lume.paths.docs'), config('swagger-lume.paths.docs_yaml'));
-            $yamlContent =  (new YamlDumper(2))->dump(
+            $yamlContent = (new YamlDumper(2))->dump(
                 json_decode(file_get_contents($filename), true),
                 20,
                 0,
