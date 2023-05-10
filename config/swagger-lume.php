@@ -76,6 +76,11 @@ return [
         'docs_yaml' => 'api-docs.yaml',
 
         /*
+        * Set this to `json` or `yaml` to determine which documentation file to use in UI
+        */
+        'format_to_use_for_docs' => env('SWAGGER_LUME__FORMAT_TO_USE_FOR_DOCS', 'json'),
+
+        /*
         |--------------------------------------------------------------------------
         | Absolute path to directory containing the swagger annotations are stored.
         |--------------------------------------------------------------------------
