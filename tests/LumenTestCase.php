@@ -23,6 +23,10 @@ class LumenTestCase extends TestCase
         if (file_exists($this->jsonDocsFile())) {
             unlink($this->jsonDocsFile());
         }
+
+        if (file_exists($this->yamlDocsFile())) {
+            unlink($this->yamlDocsFile());
+        }
         parent::tearDown();
     }
 
@@ -106,6 +110,8 @@ class LumenTestCase extends TestCase
         //For test we want to regenerate always
         $cfg['generate_always'] = true;
 
+        $cfg['generate_yaml_copy'] = true;
+
         //Adding constants which will be replaced in generated json file
         $cfg['constants']['SWAGGER_LUME_CONST_HOST'] = 'http://my-default-host.com';
 
@@ -122,14 +128,32 @@ class LumenTestCase extends TestCase
         return $this;
     }
 
-    protected function crateJsonDocumentationFile()
+    protected function createJsonDocumentationFile()
     {
         file_put_contents($this->jsonDocsFile(), '');
     }
 
+    protected function createYamlDocumentationFile()
+    {
+        file_put_contents($this->yamlDocsFile(), '');
+    }
+
     protected function jsonDocsFile()
     {
-        return config('swagger-lume.paths.docs').'/api-docs.json';
+        return sprintf(
+            '%s/%s',
+            config('swagger-lume.paths.docs'),
+            config('swagger-lume.paths.docs_json')
+        );
+    }
+
+    protected function yamlDocsFile()
+    {
+        return sprintf(
+            '%s/%s',
+            config('swagger-lume.paths.docs'),
+            config('swagger-lume.paths.docs_yaml')
+        );
     }
 
     protected function copyAssets()
