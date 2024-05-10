@@ -17,7 +17,7 @@ jobs:
       fail-fast: true
       matrix:
         php: [ '7.3', '8.0.2', '8.1', '8.2' ]
-        swagger-lume-flags:  ['latest', 'lumen-6-swagger-2', 'lumen-7-swagger-2', 'lumen-7-swagger-3', 'lumen-8-swagger-3', 'lumen-9-swagger-3', 'lumen-10-swagger-3', 'lumen-10-swagger-3-ui-4', 'lumen-11-swagger-3', 'lumen-11-swagger-3-ui-4']
+        swagger-lume-flags:  ['latest', 'lumen-6-swagger-2', 'lumen-7-swagger-2', 'lumen-7-swagger-3', 'lumen-8-swagger-3', 'lumen-9-swagger-3', 'lumen-10-swagger-3', 'lumen-10-swagger-3-ui-4', 'lumen-11-swagger-4', 'lumen-11-swagger-4-ui-4']
 
     name: PHP ${{ matrix.php }} - ${{ matrix.swagger-lume-flags }}
 
@@ -111,17 +111,17 @@ jobs:
       run: |
         composer require 'laravel/lumen-framework:11.*' --no-interaction --no-update
         composer require 'zircote/swagger-php:4.*' --no-interaction --no-update
-      if: matrix.php == '8.2' && matrix.swagger-lume-flags == 'lumen-11-swagger-3'
+      if: matrix.php == '8.2' && matrix.swagger-lume-flags == 'lumen-11-swagger-4'
 
     - name: Lumen 11 && Swagger 3 && Swagger-UI 4
       env:
         SWAGGER_VERSION: '3.0'
       run: |
-        composer require 'laravel/lumen-framework:10.*' --no-interaction --no-update
+        composer require 'laravel/lumen-framework:11.*' --no-interaction --no-update
         composer require 'zircote/swagger-php:4.*' --no-interaction --no-update
         composer require 'swagger-api/swagger-ui:4.*' --no-interaction --no-update
         composer require 'phpunit/phpunit:10.*' --no-interaction --no-update
-      if: matrix.php == '8.2' && matrix.swagger-lume-flags == 'lumen-11-swagger-3-ui-4'
+      if: matrix.php == '8.2' && matrix.swagger-lume-flags == 'lumen-11-swagger-4-ui-4'
 
     - name: Prepare code climate
       run: |
