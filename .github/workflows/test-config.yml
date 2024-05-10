@@ -47,6 +47,13 @@ jobs:
     - name: Install dependencies
       run: composer update --no-interaction --no-progress --prefer-dist --prefer-stable
 
+    - name: Only install swagger 4 before php 8.2
+      env:
+        SWAGGER_VERSION: '3.0'
+      run: |
+        composer require 'laravel/lumen-framework:6.*' --no-interaction --no-update
+        composer require 'zircote/swagger-php:3.*' --no-interaction --no-update
+      if: matrix.php != '8.2'
     - name: Lumen 6 && Swagger 2
       env:
         SWAGGER_VERSION: '2.0'
