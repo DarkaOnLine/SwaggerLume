@@ -50,7 +50,7 @@ jobs:
     - name: Only install swagger 4 before php 8.2
       run: |
         composer require 'zircote/swagger-php:3.*' --no-interaction
-      if: matrix.php != '8.2'ction --no-progress --prefer-dist --prefer-stable
+      if: matrix.php != '8.2'
 
     - name: Old doctrine on old PHP
       run: |
