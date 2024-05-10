@@ -49,8 +49,8 @@ jobs:
 
     - name: Only install swagger 4 before php 8.2
       run: |
-        composer require 'zircote/swagger-php:3.*' --no-interaction
-        composer require 'doctrine/annotations:1.*' --no-interaction
+        composer require 'zircote/swagger-php:3.*' --no-interaction --no-update
+        composer require 'doctrine/annotations:1.*' --no-interaction --no-update
       if: matrix.php != '8.2'
       
     - name: Lumen 6 && Swagger 2
