@@ -50,7 +50,12 @@ jobs:
     - name: Only install swagger 4 before php 8.2
       run: |
         composer require 'zircote/swagger-php:3.*' --no-interaction
-      if: matrix.php != '8.2'
+      if: matrix.php != '8.2'ction --no-progress --prefer-dist --prefer-stable
+
+    - name: Old doctrine on old PHP
+      run: |
+        composer require 'doctrine/annotations:1.*' --no-interaction
+      if: matrix.php == '8.0.2'
     - name: Lumen 6 && Swagger 2
       env:
         SWAGGER_VERSION: '2.0'
@@ -81,7 +86,7 @@ jobs:
       run: |
         composer require 'laravel/lumen-framework:8.*' --no-interaction --no-update
         composer require 'zircote/swagger-php:3.*' --no-interaction --no-update
-      if: (matrix.php == '7.3' || matrix.php == '8.0') && matrix.swagger-lume-flags == 'lumen-8-swagger-3'
+      if: (matrix.php == '7.3' || matrix.php == '8.0.2') && matrix.swagger-lume-flags == 'lumen-8-swagger-3'
 
     - name: Lumen 9 && Swagger 3
       env:
@@ -89,7 +94,7 @@ jobs:
       run: |
         composer require 'laravel/lumen-framework:9.*' --no-interaction --no-update
         composer require 'zircote/swagger-php:3.*' --no-interaction --no-update
-      if: matrix.php == '8.0' && matrix.swagger-lume-flags == 'lumen-9-swagger-3'
+      if: matrix.php == '8.0.2' && matrix.swagger-lume-flags == 'lumen-9-swagger-3'
 
     - name: Lumen 10 && Swagger 3
       env:
