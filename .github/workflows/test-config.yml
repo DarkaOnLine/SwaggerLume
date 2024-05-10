@@ -110,7 +110,7 @@ jobs:
         SWAGGER_VERSION: '3.0'
       run: |
         composer require 'laravel/lumen-framework:11.*' --no-interaction --no-update
-        composer require 'zircote/swagger-php:3.*' --no-interaction --no-update
+        composer require 'zircote/swagger-php:4.*' --no-interaction --no-update
       if: matrix.php == '8.2' && matrix.swagger-lume-flags == 'lumen-11-swagger-3'
 
     - name: Lumen 11 && Swagger 3 && Swagger-UI 4
@@ -118,7 +118,7 @@ jobs:
         SWAGGER_VERSION: '3.0'
       run: |
         composer require 'laravel/lumen-framework:10.*' --no-interaction --no-update
-        composer require 'zircote/swagger-php:3.*' --no-interaction --no-update
+        composer require 'zircote/swagger-php:4.*' --no-interaction --no-update
         composer require 'swagger-api/swagger-ui:4.*' --no-interaction --no-update
         composer require 'phpunit/phpunit:10.*' --no-interaction --no-update
       if: matrix.php == '8.2' && matrix.swagger-lume-flags == 'lumen-11-swagger-3-ui-4'
