@@ -51,7 +51,6 @@ jobs:
       env:
         SWAGGER_VERSION: '3.0'
       run: |
-        composer require 'laravel/lumen-framework:6.*' --no-interaction --no-update
         composer require 'zircote/swagger-php:3.*' --no-interaction --no-update
       if: matrix.php != '8.2'
     - name: Lumen 6 && Swagger 2
