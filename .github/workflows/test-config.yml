@@ -45,13 +45,15 @@ jobs:
           ${{ runner.os }}-php-
 
     - name: Install dependencies
-      run: composer update --no-interaction --no-progress --prefer-dist --prefer-stable
+      run: |
+        composer require 'zircote/swagger-php:3.*' --no-interaction
+        composer update --no-interaction --no-progress --prefer-dist --prefer-stable
 
     - name: Only install swagger 4 before php 8.2
       run: |
-        composer require 'zircote/swagger-php:3.*' --no-interaction --no-update
-        composer require 'doctrine/annotations:1.*' --no-interaction --no-update
-      if: matrix.php != '8.2'
+        composer require 'zircote/swagger-php:4.*' --no-interaction
+        composer require 'doctrine/annotations:2.*' --no-interaction
+      if: matrix.php == '8.2'
       
     - name: Lumen 6 && Swagger 2
       env:
