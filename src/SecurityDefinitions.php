@@ -86,7 +86,7 @@ class SecurityDefinitions
     /**
      * Converts an array to an object.
      *
-     * @param $array
+     * @param  $array
      * @return object
      */
     public static function arrayToObject($array)
