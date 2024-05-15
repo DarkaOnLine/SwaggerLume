@@ -44,7 +44,7 @@ if (! function_exists('swagger_lume_asset')) {
     /**
      * Returns asset from swagger-ui composer package.
      *
-     * @param $asset string
+     * @param  $asset  string
      * @return string
      *
      * @throws \SwaggerLume\Exceptions\SwaggerLumeException
