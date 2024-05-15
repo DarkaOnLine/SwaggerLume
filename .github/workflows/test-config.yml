@@ -16,8 +16,8 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [ '7.3', '8.0.2', '8.1' ]
-        swagger-lume-flags:  ['latest', 'lumen-6-swagger-2', 'lumen-7-swagger-2', 'lumen-7-swagger-3', 'lumen-8-swagger-3', 'lumen-9-swagger-3', 'lumen-10-swagger-3', 'lumen-10-swagger-3-ui-4']
+        php: [ '7.3', '8.0.2', '8.1', '8.2' ]
+        swagger-lume-flags:  ['latest', 'lumen-6-swagger-2', 'lumen-7-swagger-2', 'lumen-7-swagger-3', 'lumen-8-swagger-3', 'lumen-9-swagger-3', 'lumen-10-swagger-3', 'lumen-10-swagger-3-ui-4', 'lumen-11-swagger-4', 'lumen-11-swagger-4-ui-4']
 
     name: PHP ${{ matrix.php }} - ${{ matrix.swagger-lume-flags }}
 
@@ -45,8 +45,16 @@ jobs:
           ${{ runner.os }}-php-
 
     - name: Install dependencies
-      run: composer update --no-interaction --no-progress --prefer-dist --prefer-stable
+      run: |
+        composer require 'zircote/swagger-php:3.*' --no-interaction
+        composer update --no-interaction --no-progress --prefer-dist --prefer-stable
 
+    - name: Only install swagger 4 before php 8.2
+      run: |
+        composer require 'zircote/swagger-php:4.*' --no-interaction
+        composer require 'doctrine/annotations:2.*' --no-interaction
+      if: matrix.php == '8.2'
+      
     - name: Lumen 6 && Swagger 2
       env:
         SWAGGER_VERSION: '2.0'
@@ -77,7 +85,7 @@ jobs:
       run: |
         composer require 'laravel/lumen-framework:8.*' --no-interaction --no-update
         composer require 'zircote/swagger-php:3.*' --no-interaction --no-update
-      if: (matrix.php == '7.3' || matrix.php == '8.0') && matrix.swagger-lume-flags == 'lumen-8-swagger-3'
+      if: (matrix.php == '7.3' || matrix.php == '8.0.2') && matrix.swagger-lume-flags == 'lumen-8-swagger-3'
 
     - name: Lumen 9 && Swagger 3
       env:
@@ -85,7 +93,7 @@ jobs:
       run: |
         composer require 'laravel/lumen-framework:9.*' --no-interaction --no-update
         composer require 'zircote/swagger-php:3.*' --no-interaction --no-update
-      if: matrix.php == '8.0' && matrix.swagger-lume-flags == 'lumen-9-swagger-3'
+      if: matrix.php == '8.0.2' && matrix.swagger-lume-flags == 'lumen-9-swagger-3'
 
     - name: Lumen 10 && Swagger 3
       env:
@@ -105,12 +113,30 @@ jobs:
         composer require 'phpunit/phpunit:10.*' --no-interaction --no-update
       if: matrix.php == '8.1' && matrix.swagger-lume-flags == 'lumen-10-swagger-3-ui-4'
 
+    - name: Lumen 11 && Swagger 3
+      env:
+        SWAGGER_VERSION: '3.0'
+      run: |
+        composer require 'laravel/lumen-framework:11.*' --no-interaction --no-update
+        composer require 'zircote/swagger-php:4.*' --no-interaction --no-update
+      if: matrix.php == '8.2' && matrix.swagger-lume-flags == 'lumen-11-swagger-4'
+
+    - name: Lumen 11 && Swagger 3 && Swagger-UI 4
+      env:
+        SWAGGER_VERSION: '3.0'
+      run: |
+        composer require 'laravel/lumen-framework:11.*' --no-interaction --no-update
+        composer require 'zircote/swagger-php:4.*' --no-interaction --no-update
+        composer require 'swagger-api/swagger-ui:4.*' --no-interaction --no-update
+        composer require 'phpunit/phpunit:10.*' --no-interaction --no-update
+      if: matrix.php == '8.2' && matrix.swagger-lume-flags == 'lumen-11-swagger-4-ui-4'
+
     - name: Prepare code climate
       run: |
         curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
         chmod +x ./cc-test-reporter
         ./cc-test-reporter before-build
-      if: matrix.php == '8.1' && matrix.swagger-lume-flags == 'latest'
+      if: matrix.php == '8.2' && matrix.swagger-lume-flags == 'latest'
 
     - name: Run test suite
       run: composer run-script phpunit
@@ -121,10 +147,10 @@ jobs:
       run: |
         cp ${{github.workspace}}/tests/storage/logs/test-reports/clover.xml ${{github.workspace}}/clover.xml
         ./cc-test-reporter after-build -t clover --exit-code 0
-      if: matrix.php == '8.1' && matrix.swagger-lume-flags == 'latest'
+      if: matrix.php == '8.2' && matrix.swagger-lume-flags == 'latest'
 
     - name: Publish coveralls report
       env:
         COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: vendor/bin/php-coveralls --coverage_clover=clover.xml -v
-      if: matrix.php == '8.1' && matrix.swagger-lume-flags == 'latest'
+      if: matrix.php == '8.2' && matrix.swagger-lume-flags == 'latest'
