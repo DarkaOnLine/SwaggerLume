@@ -82,7 +82,7 @@ class SwaggerLumeController extends BaseController
         return new Response(
             view('swagger-lume::index', [
                 'secure' => RequestFacade::secure(),
-                'urlToDocs' => route('swagger-lume.docs'),
+                'urlToDocs' => route('swagger-lume.docs', [], null),
                 'operationsSorter' => config('swagger-lume.operations_sort'),
                 'configUrl' => config('swagger-lume.additional_config_url'),
                 'validatorUrl' => config('swagger-lume.validator_url'),
